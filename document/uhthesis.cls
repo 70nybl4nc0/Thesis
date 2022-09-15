@@ -1,5 +1,4 @@
-% Created by Yasser González-Fernández <ygonzalezfernandez@gmail.com>
-% Created by Ariel Hernández Amador <gnuaha7@uh.cu>
+
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{uhthesis}[2011/04/12 0.1 uhthesis]
@@ -13,7 +12,6 @@
 \RequirePackage{mathptmx}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{lmodern}
-
 \RequirePackage[spanish,es-ucroman]{babel}
 \RequirePackage[refpage, intoc, spanish]{nomencl}
 \RequirePackage{graphicx}
