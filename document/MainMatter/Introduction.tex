@@ -2,41 +2,39 @@
 \addcontentsline{toc}{chapter}{Introducción}
 
 
-cita: "La IA es la ciencia y la ingeniería de hacer que las máquinas realicen tareas que nunca han visto y para las que no han sido preparadas de antemano" John McCarthy. Generality in artificial intelligence. Communications of the ACM, 30(12):1030–1035, 1987.
+La idea de que las máquinas podrían adquirir nuevas habilidades para resolver problemas, mediante un proceso de aprendizaje similar al de los niños humanos, se remonta incluso al los orígenes de la computación. Incluso Turing pensaba que este sería el futuro y llegó a proponer varias pruebas para susodichos sistemas; entre ellas la más conocida popularmente es El Juego de la imitación, donde las máquinas deben entablar una converzación (originalmente por escrito) indistinguible a los humanos.
 
-La idea de que las maquinas podrian adquirir nuevas habilidades para resolver problemas mediante un proceso de aprendizaje similar al de los niños humanos se remonta incluso al los origenes del campo.  
+Lograr que las máquinas sean tan (o más) inteligentes que los humanos ha sido una de las temáticas de ciencia ficción más usada. La inteligencia es asociada, en sentido popular, a la capacidad del procesador (mecánico o biológico) de realizar complejos cálculos o computos para resolver problemas de forma eficiente y precisa. Al contrario del pensamiento popular, en este documento se aborda un concepto de inteligencia fundamentalmente diferente, donde se valora mucho más la eficiencia en la adquisición de habilidades que el nivel de maestria individual en ellas.
+
+En el campo de la inteligencia artificial (IA), esta capacidad de adquisición se posiciona como la piedra angular ya que la IA se describe, entre muchos otros conceptos, como la ciencia y la ingeniería de hacer que las máquinas realicen tareas que nunca han visto y para las que no han sido preparadas de antemano [\cite{mccarthy1987generality}]. Esta capacidad se denomina generalización, y conciste en utlizar datos previos para resolver problemas diferentes en el futuros. Los grados de generalización serán abordados más adelante.
+
+
+La historia de la IA ha consistido en ascender lentamente por el espectro de la capacidad de generalización, comenzando con sistemas que en gran medida no mostraban generalización (IA simbólica) y evolucionando hacia sistemas robustos (aprendizaje automático) capaces de generalización local. Ahora estamos entrando en una nueva etapa, en la que buscamos crear sistemas flexibles capaces de una amplia generalización (por ejemplo, vehículos autoconducidos, asistentes de IA o robots con desarrollo cognitivo). Recientemente se ha incrementado el interés por sistemas inteligentes con mejores capacidades de generalizar. Grandes empresas han hecho de dichos sistemas como el epicentro de sus modelos de negocio. Por ejemplo, varias compañías automivilísticas han apostado al mercado de automóviles capaces de conducir de forma segura por si mismos, otras compañías como Boston Dynamics ha creado robots capaces de ayudar ha realizar mantenimientos y dectectar fallos a ingenieros o partircipar en operaciones de rescate ante desastres naturales, también vale mencionar asistentes de voz como Siri o Alexa entre muchos otros. Todos ellos realizan tareas complejas formadas por sub-tareas diferentes y son capaces de manejar un gran número situaciones desconocidas y aprender de estas.
+
+\section*{Problemática}
+
+A medida que surgen sistemas más flexibles se hace necesario establecer métodos para evaluar su capacidad de generalizacion. Lamentablemente poco se ha hecho en lo que concierne al desarrollo de estas pruebas debido a la falta de concenso en el tema y la dificultad que representa realizar mediciones quantificables.
+
+En sus inicios las mediciones de inteligencia de las máquinas se hacian con una perspectiva antropocéntrica. Donde el grado de expresión de inteligencia se mide principalmente por la similitud con que estos sistemas y los humanos resuelven las mismas tareas propuestas. En ese sentido también hubo una tendencia a realizar evaluaciones de carácter psicométrico que tienen más en su contra que a favor. La mayoria de las propuestas de evaluación pasadas requieren de jurados humanos y son costosamente repetibles y carecen de fidelidad de veredicto debido a que es un criterio de jurado.
+
+
+
+Recientemente y con le desarrollo de algoritmos de aprendizaje por reforzamiento se hace necesario aumentar 
+
+
 
 La evaluación de tareas específicas centrada en las habilidades ha sido adecuada para los sistemas cerrados que buscan la solidez en entornos que sólo presentan incógnitas conocidas, pero el desarrollo de sistemas capaces de manejar incógnitas desconocidas requiere la evaluación de sus habilidades en un sentido general y en torno esta capacidad se desarrollará este documento.
 
-La capacidad generalización se basa fundamentalmente en las nociones relacionadas a novedad e incertidumbre. Un sistema sólo puede generalizar ante información nueva que no pueda ser conocida de antemano ni por el sistema o por su creador. Dica capacidad puede presentarse en diferene a medida que aumenta el dominio de las tareas y problemas que se pueden manejar. Más adelante se profundizará más en su categorización.
-
-La historia de la IA ha consistido en ascender lentamente por el espectro de esta capacidad, comenzando con sistemas que en gran medida no mostraban generalización (IA simbólica) y evolucionando hacia sistemas robustos (aprendizaje automático) capaces de generalización local. Ahora estamos entrando en una nueva etapa, en la que buscamos crear sistemas flexibles capaces de una amplia generalización (por ejemplo, vehículos autoconducidos, asistentes de IA o robots de desarrollo cognitivo).
-
-
-describe la inteligencia como la eficiencia en la adquisición de habilidades 
-
-
-Tipos de Generalizacion
-
-- Generalización centrada en el sistema: es la capacidad de un sistema de aprendizaje para manejar situaciones que no ha encontrado antes. La noción formal de error de generalización en la teoría del aprendizaje estadístico pertenecería aquí.
-
-- Generalización consciente del desarrollador: es la capacidad de un sistema, ya sea de aprendizaje o estático, para manejar situaciones que ni el sistema ni el desarrollador del sistema han encontrado antes.
-
-Grados de Generalizacion
-
-- Ausencia de generalización: Los sistemas de IA en los que no hay incertidumbre no muestran generalización. Por ejemplo, no se puede decir que un programa que juega a "4 en Línea" mediante una iteración exhaustiva "generalice" a todas las configuraciones del tablero.
-
-- Generalización local o "robustez": Es la capacidad de un sistema para manejar nuevos puntos de una distribución conocida para una sola tarea o un conjunto bien delimitado de tareas conocidas, dado un muestreo suficientemente denso de ejemplos de la distribución (por ejemplo, la tolerancia a las perturbaciones previstas dentro de un contexto fijo). Por ejemplo, se puede decir que un clasificador de imágenes que puede distinguir imágenes RGB de 150x150 no vistas anteriormente que contienen gatos de las que contienen perros, después de haber sido entrenado con muchas de esas imágenes etiquetadas, realiza una generalización local. 
-
-- Generalización amplia o "flexibilidad": Es la capacidad de un sistema para manejar una amplia categoría de tareas y entornos sin más intervención humana. Esto incluye la capacidad de manejar situaciones que no podrían haber sido previstas por los creadores del sistema. Podría considerarse que refleja la capacidad del ser humano en un único y amplio ámbito de actividad (por ejemplo, las tareas domésticas o la conducción en el mundo real).
-
-- Generalización extrema: Describe los sistemas abiertos con la capacidad de abordar tareas completamente nuevas que sólo comparten puntos comunes abstractos con situaciones previamente encontradas, aplicables a cualquier tarea y dominio dentro de un amplio alcance. Esto podría caracterizarse como "adaptación a incógnitas desconocidas en una gama desconocida de tareas y dominios". Las formas biológicas de inteligencia (los humanos y posiblemente otras especies in- telligentes) son el único ejemplo de un sistema de este tipo en este momento.
-
-A esta lista podríamos, en teoría, añadir una entrada más: La "universalidad", que extendería la "generalidad" más allá del ámbito de las tareas relevantes para los humanos, a cualquier tarea que pueda ser abordada de forma práctica dentro de nuestro universo (nótese que esto es diferente de "cualquier tarea en absoluto", tal y como se entiende en los supuestos del teorema No Free Lunch [98, 97]).
 
 
 
-Es importante destacar que el espectro de la generalización descrito anteriormente parece reflejar la organización de las capacidades cognitivas de los seres humanos tal y como se establece en las teorías de la estructura de la inteligencia en la psicología cognitiva.
+
+
+
+
+
+
+
 
 
 
