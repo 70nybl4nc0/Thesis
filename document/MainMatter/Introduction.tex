@@ -1,24 +1,28 @@
 \chapter*{Introducción}\label{chapter:introduction}
 \addcontentsline{toc}{chapter}{Introducción}
 
+[El deseo de la IA de lograr inteligencia similar a la humana]
+La idea de que las máquinas podrían adquirir nuevas habilidades para resolver problemas, mediante un proceso de aprendizaje similar al de los niños humanos, se remonta incluso al los orígenes de la computación. Incluso Turing pensaba que este sería el futuro y llegó a proponer varias pruebas para susodichos sistemas; entre ellas la más conocida popularmente es El Juego de la imitación, donde las máquinas deben entablar una converzación (originalmente por escrito) indistinguible a las personas. Lograr que las máquinas sean tan (o más) inteligentes que el hombre ha sido una de las temáticas de ciencia ficción más utilizada pero ya en este siglo los avances nos estan acercando a lograr ese hito.
+\section{Introduccion 2}
+[El concepcion que usaremos para definir la inteligencia]
+La inteligencia es asociada, en sentido popular, a la capacidad que tiene un procesador (mecánico o biológico) de realizar complejos cálculos o computos para resolver problemas de forma eficiente, precisa y flexible. En este documento, al contrario, se aborda un concepto de inteligencia fundamentalmente diferente, donde se valora mucho más la eficiencia en la adquisición de habilidades que el nivel de maestria individual alcanzado en ellas. Es decir, la capacidad de un sistema para aprender a resolver nuevas tareas nunca antes vistas, incluso por su creador.
 
-La idea de que las máquinas podrían adquirir nuevas habilidades para resolver problemas, mediante un proceso de aprendizaje similar al de los niños humanos, se remonta incluso al los orígenes de la computación. Incluso Turing pensaba que este sería el futuro y llegó a proponer varias pruebas para susodichos sistemas; entre ellas la más conocida popularmente es El Juego de la imitación, donde las máquinas deben entablar una converzación (originalmente por escrito) indistinguible a los humanos.
+[Intro al concepto de generalización]
+En el campo de la inteligencia artificial (IA), esta capacidad de adquisición se posiciona como la piedra angular. Algunos autores incluso definen la IA como: La ciencia y la ingeniería de hacer que las máquinas realicen tareas que nunca han visto y para las que no han sido preparadas de antemano [\cite{mccarthy1987generality}]. Esta capacidad se denomina generalización, y conciste en utlizar datos previos para resolver problemas diferentes en el futuros. Los grados de generalización serán formalizados en el próximo capítulo.
 
-Lograr que las máquinas sean tan (o más) inteligentes que los humanos ha sido una de las temáticas de ciencia ficción más usada. La inteligencia es asociada, en sentido popular, a la capacidad del procesador (mecánico o biológico) de realizar complejos cálculos o computos para resolver problemas de forma eficiente y precisa. Al contrario del pensamiento popular, en este documento se aborda un concepto de inteligencia fundamentalmente diferente, donde se valora mucho más la eficiencia en la adquisición de habilidades que el nivel de maestria individual en ellas.
-
-En el campo de la inteligencia artificial (IA), esta capacidad de adquisición se posiciona como la piedra angular ya que la IA se describe, entre muchos otros conceptos, como la ciencia y la ingeniería de hacer que las máquinas realicen tareas que nunca han visto y para las que no han sido preparadas de antemano [\cite{mccarthy1987generality}]. Esta capacidad se denomina generalización, y conciste en utlizar datos previos para resolver problemas diferentes en el futuros. Los grados de generalización serán abordados más adelante.
-
-
+[Breve recorrido por los diferentes niveles en capacidad generalización]
 La historia de la IA ha consistido en ascender lentamente por el espectro de la capacidad de generalización, comenzando con sistemas que en gran medida no mostraban generalización (IA simbólica) y evolucionando hacia sistemas robustos (aprendizaje automático) capaces de generalización local. Ahora estamos entrando en una nueva etapa, en la que buscamos crear sistemas flexibles capaces de una amplia generalización (por ejemplo, vehículos autoconducidos, asistentes de IA o robots con desarrollo cognitivo). Recientemente se ha incrementado el interés por sistemas inteligentes con mejores capacidades de generalizar. Grandes empresas han hecho de dichos sistemas como el epicentro de sus modelos de negocio. Por ejemplo, varias compañías automivilísticas han apostado al mercado de automóviles capaces de conducir de forma segura por si mismos, otras compañías como Boston Dynamics ha creado robots capaces de ayudar ha realizar mantenimientos y dectectar fallos a ingenieros o partircipar en operaciones de rescate ante desastres naturales, también vale mencionar asistentes de voz como Siri o Alexa entre muchos otros. Todos ellos realizan tareas complejas formadas por sub-tareas diferentes y son capaces de manejar un gran número situaciones desconocidas y aprender de estas.
 
-\section*{Problemática}
+\section*{Motivación}
 
-A medida que surgen sistemas más flexibles se hace necesario establecer métodos para evaluar su capacidad de generalizacion. Lamentablemente poco se ha hecho en lo que concierne al desarrollo de estas pruebas debido a la falta de concenso en el tema y la dificultad que representa realizar mediciones quantificables.
+[Surgen IA mas inteligentes, pero es dificil evaluarlas formalmente]
+A medida que surgen sistemas más flexibles se hace necesario establecer métodos para evaluar su capacidad de generalizacion. Lamentablemente poco se ha hecho en lo que concierne al desarrollo de estas pruebas debido a la falta de concenso en el tema y la dificultad que representa realizar mediciones quantificables de sus capacidades de generalización. Es importante destacar que una capacidad es una construcción abstracta (basada en la teoría y en fenómenos estadísticos), en lugar de una propiedad objetiva y directamente medible de una mente individual, como la puntuación obtenida en un test específico.
 
+[Breve historia de los metodos propuestos para evaluar este tipo de inteligencias]
 En sus inicios las mediciones de inteligencia de las máquinas se hacian con una perspectiva antropocéntrica. Donde el grado de expresión de inteligencia se mide principalmente por la similitud con que estos sistemas y los humanos resuelven las mismas tareas propuestas. En ese sentido también hubo una tendencia a realizar evaluaciones de carácter psicométrico que tienen más en su contra que a favor. La mayoria de las propuestas de evaluación pasadas requieren de jurados humanos y son costosamente repetibles y carecen de fidelidad de veredicto debido a que es un criterio de jurado.
 
 
-
+[Se ha hecho poco para evaluar algoritmos de RL y Agentes]
 Recientemente y con le desarrollo de algoritmos de aprendizaje por reforzamiento se hace necesario aumentar 
 
 
@@ -34,18 +38,3 @@ La evaluación de tareas específicas centrada en las habilidades ha sido adecua
 
 
 
-
-
-
-
-- Inteligencia. Inteligencia General "El santo grial de la IA"
-
-- Rendimiento y Generalización. Key concepts.
-
-- Primeras propuestas de evaluación, enfoque antropocéntrico de Turing. La prueba del café.
-
-- Chollet, ARC 2019, formalizacion de las evaluaciones.
-
-- Aprendizaje por reforzamiento y agentes.
-
-- Vació existente de entornos de evaluación de IG. (motivacion?)
