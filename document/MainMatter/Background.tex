@@ -39,12 +39,12 @@ La interacción agente-entorno se descompone naturalmente en una secuencia de ep
 
 \subsection*{Principales estrategias para resolver problemas de aprendizaje por refuerzo}
 
-El objetivo de la RL es que el agente aprenda a navegar por el entorno para maximizar una métrica de recompensa acumulada. La política es como el algoritmo que el agente perfecciona para maximizar la recompensa. Por tanto el objetivo de la RL es aprender la política que máximice la recompensa acumulada.
+El objetivo de la RL es que el agente aprenda a navegar por el entorno para maximizar una métrica de recompensa acumulada. La política es como el algoritmo que el agente perfecciona para maximizar la recompensa. Por tanto el objetivo de la RL es construir la política que máximice la recompensa acumulada, al menos de forma implícita.
 
-Los algoritmos de RL pueden dividirse principalmente en dos categorías: basados en modelos y sin modelos.
+Los algoritmos de RL se pueden dividir utilizando varias categorizaciones, una de ellas está dada en el uso del modelo del entorno: los \textit{basados en modelos} y los \textit{libres de modelo}.
 
 \begin{itemize}
-\item Los \textit{basados en el modelo}, tal y como suena, tienen un agente que intenta comprender su entorno y crear un modelo para él basado en sus interacciones con este entorno. En un sistema de este tipo, las preferencias tienen prioridad sobre las consecuencias de las acciones, es decir, el agente codicioso siempre intentará realizar una acción que le permita obtener la máxima recompensa, independientemente de lo que esa acción pueda causar.
+\item Los \textit{basados en el modelo}, tal y como suena, tienen un agente que intenta comprender su entorno y crear un modelo para él basado en sus interacciones con este entorno. En un sistema de este tipo, las preferencias tienen prioridad sobre las consecuencias de las acciones, es decir, el agente codicioso siempre intentará realizar una acción que le permita obtener la máxima recompensa, independientemente de lo que esa acción pueda causar. Algoritmos como \textit{Dyna} son un ejemplo.
 
 \item Por otro lado, como muestra la [Fig. \ref{fig:rl-strategies}], los algoritmos \textit{libres de modelo} buscan aprender las consecuencias de sus acciones a través de la experiencia. En otras palabras, un algoritmo de este tipo llevará a cabo una acción varias veces y ajustará la política (la estrategia que subyace a sus acciones) para obtener recompensas óptimas, basándose en los resultados.
 \end{itemize}
@@ -59,14 +59,19 @@ Si el agente puede predecir (o simular) la recompensa de una acción antes de ll
 \end{figure}
 
 
-Policy Base y Value Base.
+Dentro de los algoritmos  \textit{libres de modelo} existe otra caracterización basada en si se construye explicitamente o no la política del agente.
 
-Los métodos on-policy intentan evaluar o mejorar la política que se utiliza para tomar las decisiones, mientras que los métodos off-policy evalúan o mejoran una política diferente a la utilizada para generar los datos. En el primer caso, el agente aprende la función de valor de la política que sigue en ese momento, mientras que en el segundo caso aprende la función de valor de la política que considera mejor en ese momento. Estas dos políticas suelen ser diferentes debido a la necesidad de explorar. 
+\begin{itemize}
+\item En los métodos \textit{basados en políticas} se construye explícitamente una representación de una política y se mantiene en memoria durante el aprendizaje. Se puede citar los algoritmos de \textit{Policy Gradient}, \textit{Monte Carlos Tree Search}, entre otros.
 
+\item En los métodos \textit{basados en valores} no se almancena ninguna política explícita, sólo una función de valor. La política es aquí implícita y puede derivarse directamente de la función de valor (elegir la acción con el mejor valor). Se puede citar los algoritmos de \textit{Q-Learning}, \textit{Deep Q-Learning}, \textit{SARSA}, entre otros.
 
-Señalar que no se definiran los metodos de aprendizaje evolutivos, geneticos, o por imitación.
+\item Los algoritmos de \textit{Actor-crítico} tienen una mezcla de los dos anteriores. Se puede citar algoritmos como AlphaZero.
+\end{itemize}
 
-Utilidad y aplicacion de algoritmos de RL.
+Los métodos on-policy intentan evaluar o mejorar la política que se utiliza para tomar las decisiones, mientras que los métodos off-policy evalúan o mejoran una política diferente a la utilizada para generar los datos. En el primer caso, el agente aprende la función de valor de la política que sigue en ese momento, mientras que en el segundo caso aprende la función de valor de la política que considera mejor en ese momento. Estas dos políticas suelen ser diferentes debido a la necesidad de explorar.
+
+Existen muchos otros tipos de algoritmos de aprendizaje por reforzamiento, como los geneticos o evolutivos, por imitación, entre otros. Por la simplicidad del documento se omitirá sus descripciones.
 
 \section{Generalizacion en machine learning}\label{section:state-of-the-art:generalization-on-machine-learning}
 
@@ -106,17 +111,25 @@ Es importante destacar que el espectro de la generalización descrito anteriorme
     \label{fig:g-factor}
 \end{figure}
 
+[OUTLINE]
 El objetivo de este documento son los sistemas que desarrollan capacidades extremas de generalizacion o habilidades cognitivas generales.
 
+[OUTLINE]
 Capacidad de **Generalizacion** en los algoritmos de RL. El problema de overfitting en el entrenamiento.
 
-\section{Evaluacion de algoritmos}\label{section:state-of-the-art:evaluating-algoritms}
+\section{Evaluación de algoritmos}\label{section:state-of-the-art:evaluating-algoritms}
 
-Tipos de evaluaciones: 
-- Revision humana
-- Analisis en Caja-Blanca (White-Box Analysis)
-- Oponencial (Peer Confrontation)
-- Comparaciones (Benchmarks)
+Las medidas de rendimiento que cuantifican la habilidad de un sistema en una tarea determinada han impulsado el exito de la inteligencia artificial. No existe una forma única y formalizada de realizar una evaluación basada en la destreza. Entre los enfoques que han tenido éxito históricamente se encuentran:
+
+\begin{itemize}
+\item Revision humana: hacer que jueces humanos observen la respuesta de entrada- salida del sistema y la puntúen. Esta es la idea que subyace al test de Turing y sus variantes. Este modo de evaluación rara vez se utiliza en la práctica, debido a que es caro, imposible de automatizar y subjetivo. Algunos sistemas de IA orientados al ser humano (en particular los chatbots comerciales) lo utilizan como uno de los múltiples mecanismos de evaluación
+
+\item Analisis en Caja-Blanca (White-Box Analysis): inspeccionar la implementación del sistema para determinar su respuesta de entrada-salida y puntuarla. Esto es más relevante para los algoritmos que resuelven una tarea totalmente descrita en un entorno totalmente descrito en el que todas las entradas posibles pueden enumerarse explícitamente o describirse analíticamente y a menudo tomaría la forma de una prueba de optimalidad.
+
+\item Oponencial (Peer Confrontation): hacer que el sistema compita contra otras IAs o contra humanos. Este es el modo de evaluación preferido para los juegos de jugador contra jugador, como el ajedrez.
+
+\item Comparaciones (Benchmarks): hacer que el sistema produzca resultados para un conjunto de pruebas de entradas (o entornos) para los que se conoce el resultado deseado, y puntuar la respuesta.
+\end{itemize}
 
 Particularmente los Benchmarks han aportado mucho mas. 
 
