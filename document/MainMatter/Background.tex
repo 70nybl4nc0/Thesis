@@ -14,7 +14,7 @@ En inteligencia artificial la tarea básica del aprendizaje por refuerzo consist
     \label{fig:rl-elements}
 \end{figure}
 
-\subsection*{Componentes del aprendizaje por refuerzo}
+\subsection{Componentes del aprendizaje por refuerzo}
 
 Más allá de los macroconceptos de agente, entorno, observaciones y acciones, se pueden identificar cuatro subelementos principales de un sistema de aprendizaje por refuerzo: la política, la señal de recompensa, la función de valor y, opcionalmente, el modelo del entorno.
 
@@ -27,7 +27,7 @@ Las recompensas son en cierto modo primarias, mientras que los valores, como pre
 El cuarto y último elemento de algunos sistemas de aprendizaje por refuerzo es un modelo del entorno. Se trata de algo que imita el comportamiento del entorno o, más generalmente, que permite hacer inferencias sobre cómo se comportará el entorno. Por ejemplo, dado un estado y una acción, el modelo puede predecir el siguiente estado y la siguiente recompensa resultantes.
 
 
-\subsection*{Proceso de Decisión de Markov (MDP)}
+\subsection{Proceso de Decisión de Markov (MDP)}
 
 Idealmente, es una señal de estado que resuma las sensaciones pasadas de forma compacta, pero de tal manera que se conserve toda la información relevante. Esto requiere normalmente más que las sensaciones inmediatas, pero nunca más que la historia completa de todas las sensaciones pasadas. Una señal de estado que consigue retener toda la información relevante se dice que es Markov, o que tiene la propiedad Markov.
 
@@ -37,7 +37,7 @@ Una tarea de aprendizaje por refuerzo que satisface la propiedad de Markov se de
 
 La interacción agente-entorno se descompone naturalmente en una secuencia de episodios separados (tareas episódicas), y otra en la que no (tareas continuas). El primer caso es matemáticamente más fácil porque cada acción afecta sólo al número finito de recompensas recibidas posteriormente durante el episodio.
 
-\subsection*{Principales estrategias para resolver problemas de aprendizaje por refuerzo}
+\subsection{Principales estrategias para resolver problemas de aprendizaje por refuerzo}
 
 El objetivo de la RL es que el agente aprenda a navegar por el entorno para maximizar una métrica de recompensa acumulada. La política es como el algoritmo que el agente perfecciona para maximizar la recompensa. Por tanto el objetivo de la RL es construir la política que máximice la recompensa acumulada, al menos de forma implícita.
 
@@ -79,14 +79,14 @@ La generalización es la capacidad de manejar situaciones (o tareas) que difiere
 
 La capacidad generalización se basa fundamentalmente en las nociones relacionadas a la novedad e incertidumbre. Un sistema sólo puede generalizar ante información nueva que no pueda ser conocida de antemano ni por el sistema o por su creador. Dicha capacidad puede se pone en evidencia a medida que aumenta el dominio de las tareas y problemas que se pueden manejar. Para entender mejor estas nociones se definirán varios conceptos a continuación.
 
-\subsection*{Tipos de Generalizacion}
+\subsection{Tipos de Generalizacion}
 
 \begin{itemize}
 \item Generalización centrada en el sistema: es la capacidad de un sistema de aprendizaje para manejar situaciones que no ha encontrado antes. La noción formal de error de generalización en la teoría del aprendizaje estadístico pertenecería aquí.
 
 \item Generalización consciente del desarrollador: es la capacidad de un sistema, ya sea de aprendizaje o estático, para manejar situaciones que ni el sistema ni el desarrollador del sistema han encontrado antes.
 \end{itemize}
-\subsection*{Grados de Generalizacion}
+\subsection{Grados de Generalizacion}
 
 Aunque los límites entre los grados de la escala de generalización son mayormente difusos y continuos, se ha agrupado en 4 niveles fundamentales de interés para el estudio:
 
@@ -114,24 +114,26 @@ Es importante destacar que el espectro de la generalización descrito anteriorme
 [OUTLINE]
 El objetivo de este documento son los sistemas que desarrollan capacidades extremas de generalizacion o habilidades cognitivas generales.
 
-[OUTLINE]
-Capacidad de **Generalizacion** en los algoritmos de RL. El problema de overfitting en el entrenamiento.
-
 \section{Evaluación de algoritmos}\label{section:state-of-the-art:evaluating-algoritms}
 
 Las medidas de rendimiento que cuantifican la habilidad de un sistema en una tarea determinada han impulsado el exito de la inteligencia artificial. No existe una forma única y formalizada de realizar una evaluación basada en la destreza. Entre los enfoques que han tenido éxito históricamente se encuentran:
 
 \begin{itemize}
-\item Revision humana: hacer que jueces humanos observen la respuesta de entrada- salida del sistema y la puntúen. Esta es la idea que subyace al test de Turing y sus variantes. Este modo de evaluación rara vez se utiliza en la práctica, debido a que es caro, imposible de automatizar y subjetivo. Algunos sistemas de IA orientados al ser humano (en particular los chatbots comerciales) lo utilizan como uno de los múltiples mecanismos de evaluación
+\item Revision humana: Hacer que jueces humanos observen la respuesta de entrada-salida del sistema y la puntúen. Esta es la idea que subyace al test de Turing y sus variantes. Este modo de evaluación rara vez se utiliza en la práctica, debido a que es caro, imposible de automatizar y subjetivo. Algunos sistemas de IA orientados al ser humano (en particular los chatbots comerciales) lo utilizan como uno de los múltiples mecanismos de evaluación.
 
-\item Analisis en Caja-Blanca (White-Box Analysis): inspeccionar la implementación del sistema para determinar su respuesta de entrada-salida y puntuarla. Esto es más relevante para los algoritmos que resuelven una tarea totalmente descrita en un entorno totalmente descrito en el que todas las entradas posibles pueden enumerarse explícitamente o describirse analíticamente y a menudo tomaría la forma de una prueba de optimalidad.
+\item Analisis en Caja-Blanca (White-Box Analysis): Inspeccionar la implementación del sistema para determinar su respuesta de entrada-salida y puntuarla. Esto es más relevante para los algoritmos que resuelven una tarea totalmente descrita en un entorno totalmente descrito en el que todas las entradas posibles pueden enumerarse explícitamente o describirse analíticamente y a menudo tomaría la forma de una prueba de optimalidad.
 
-\item Oponencial (Peer Confrontation): hacer que el sistema compita contra otras IAs o contra humanos. Este es el modo de evaluación preferido para los juegos de jugador contra jugador, como el ajedrez.
+\item Oponencial (Peer Confrontation): Hacer que el sistema compita contra otras IAs o contra humanos. Este es el modo de evaluación preferido para los juegos de jugador contra jugador, como el ajedrez.
 
-\item Comparaciones (Benchmarks): hacer que el sistema produzca resultados para un conjunto de pruebas de entradas (o entornos) para los que se conoce el resultado deseado, y puntuar la respuesta.
+\item Comparaciones de referencia (Benchmarks): Hacer que el sistema produzca resultados para un conjunto de pruebas de entradas (o entornos) para los que se conoce el resultado deseado, y puntuar la respuesta.
 \end{itemize}
 
-Particularmente los Benchmarks han aportado mucho mas. 
+Los \textit{Benchmarks}, en particular, han sido un importante motor de progreso en la IA, porque son reproducibles (el conjunto de pruebas es fijo), justos (el conjunto de pruebas es el mismo para todos), escalables (es barato realizar la evaluación muchas veces), fáciles de configurar y lo suficientemente flexibles como para ser aplicables a una amplia gama de tareas posibles. Los puntos de referencia han sido a menudo más impactantes en el contexto de una competición entre diferentes equipos de investigación.
+
+La robustez de los sistemas que se desarrollan, en particular los modelos de Deep Learning, suele ser problemática. Esto se debe en gran parte al hecho de que la mayoría de los benchmarks no prestan mucha atención a la evaluación formal de la robustez y a la cuantificación de la generalización, y por lo tanto pueden ser resueltos a través de "atajos" que el descenso de gradiente es apto para explotar.
+
+[OUTLINE]
+Capacidad de **Generalizacion** en los algoritmos de RL. El problema de overfitting en el entrenamiento.
 
 \section{Una buena evaluacion de Inteligencia}\label{section:state-of-the-art:a-good-measure-of-inteligence}
 
@@ -144,7 +146,8 @@ Tipos de prejuicios y experiencias a considerar:
 
 Las premisas de metraaprendizaje son objetivo de esta ciencia. Es la inteligencia en si misma. Entender como el cerebro transforma experiencias en conocimientos y habilidades.
 
-La comparación entre dos sistemas debe ser JUSTA teniendo en cuenta los **Conocimientos previos de alto nivel** que posean. (remitir al problema de overfitting mencioado antes)
+La comparación entre dos sistemas debe ser JUSTA teniendo en cuenta los **Conocimientos previos de alto nivel** que posean. 
+
 
 Tambien debe considerarse el **Ambito de tareas compartido** entre los sistemas a comparar. Y el grado de especializacion que son alcanzables en ese ambito.
 
@@ -160,31 +163,30 @@ Caracteristicas necesarias para una evaluacion de inteligencia extrema:
 
 \section{Entornos de evaluacion de Inteligencia}\label{section:state-of-the-art:inteligence-evaluation-enviroments}
 
-Primeras pruebas propuestas
+\subsection{Primeras pruebas propuestas}
 
 Las primeras ideas para evaluacion eran por Revision humana y tenian un caracter Antropocéntrico.
 
-- **Juego de Imitación** (Test de Turing), explicacion.
+\subsubsection{Juego de Imitación}
+% - **Juego de Imitación** (Test de Turing), explicacion.
 
-- **Prueba del Café**, explicacion.
+\subsubsection{Prueba del Café}
+% - **Prueba del Café**, explicacion.
 
-- **Pruebas psicometricas**, explicacion.
+\subsubsection{Pruebas psicometricas}
+% - **Pruebas psicometricas**, explicacion.
 
 Comentar sobre la inefectividad y los problemas que trae hacer evaluaciones con supervision. (Mencionar las buenas practicas para evaluaciones de mas adelante)
 
-Otas propuestas de evaluación
+\subsection{Otas propuestas de evaluación}
 
 La actual tendencia de investigadores por desarrollar algoritmos de proposito general.  
 
 Ejemplos de algunas evaluaciones mas modernas pero no se implementaron.
 
-- **The bica cognitive decathlon** (2004)
+\subsubsection{The bica cognitive decathlon (2004)}
 
-- **Olimpiadas de Turing** (2014)
-
-State of the Art
-
-La inteligencia como capacidad de adaptacion a nuevos entornos.
+\subsubsection{Olimpiadas de Turing (2014)}
 
 
 \subsection{Entornos de evaluación con tareas conocidas}\label{section:state-of-the-art:inteligence-evaluation-enviroments:evaluation-enviroments-with-know-tasks}
@@ -196,19 +198,20 @@ La lógica subyacente de estos esfuerzos es medir algo más general que la habil
 Medir únicamente la destreza en una tarea determinada no es suficiente para medir la inteligencia, porque la destreza está fuertemente modulada por el conocimiento previo y la experiencia: los datos de entrenamiento ilimitados permiten a los experimentadores "comprar" niveles arbitrarios de destreza para un sistema, de forma que se enmascara el propio poder de generalización del sistema.
 - citar openIA con sus sistemas para jugar Dota etc
 
-\section{Entornos de evaluacion de la capacidad de generalizacion en algoritmos **RL**}\label{section:state-of-the-art:evaluation-enviroments-for-generalization-on-rl-algoritms}
+\section{Entornos de evaluacion de la capacidad de generalizacion en algoritmos RL}\label{section:state-of-the-art:evaluation-enviroments-for-generalization-on-rl-algoritms}
 
 Los entornos de evaluacion para RL, en su mayoria se enfocan en la generalicacion local o flexible.
 
-**The Arcade Learning Environment** (2013)
+\subsection{The Arcade Learning Environment}
 
-**Rogue-Gym** (2019) descripcion. Objetivos.
+ALE está construido sobre Stella1 , un emulador de Atari 2600 de código abierto. Permite al usuario interactuar con la Atari 2600 recibiendo los movimientos del joystick, enviando información de la pantalla y/o de la RAM, y emulando la plataforma. ALE también proporciona una capa de manejo de juegos que transforma cada juego en un problema estándar de aprendizaje por refuerzo, identificando la puntuación acumulada y si el juego ha terminado. Por defecto, cada observación consiste en una única pantalla de juego (frame): una matriz 2D de píxeles de 7 bits, de 160 píxeles de ancho por 210 de alto. El espacio de acción está formado por las 18 acciones discretas definidas por el mando del joystick. La capa de gestión del juego también especifica el conjunto mínimo de acciones necesarias para jugar a un determinado juego, aunque ninguno de los resultados de este artículo hace uso de esta información. Cuando se ejecuta en tiempo real, el simulador genera 60 fotogramas por segundo, y a toda velocidad emula hasta 6000 fotogramas por segundo. La recompensa en cada paso de tiempo se define juego por juego, normalmente tomando la diferencia de puntuación o puntos entre fotogramas. Un episodio comienza en el primer fotograma después de que se emita un comando de reinicio, y termina cuando el juego termina. La capa de gestión del juego también ofrece la posibilidad de terminar el episodio después de un número predefinido de fotogramas. Por lo tanto, el usuario tiene acceso a varias docenas de juegos a través de una única interfaz común, y añadir soporte para nuevos juegos es relativamente sencillo.
 
-**Procgen** (2020) descripcion. Objetivos.
-
+\subsection{Rogue-Gym}
+Ambito de evaluacion.
+\subsection{Procgen}
 Ambito de evaluacion.
 
-El problema con las pruebas generativas.
+[OUTLINE] El problema con las pruebas generativas.
 
 Resumen de estos más los otros 12 benchmarks similares que encontré y aportan ideas de lo mismo. Aqui puedo ampliar con otros ejemplos en caso de ser necesario.
 
@@ -218,7 +221,7 @@ Ambito de evaluacion.
 
 Premisas implicitas de conocimiento.
 
-\subsection*{MineRL y la prueba del Diamante}
+\subsection{MineRL y la prueba del Diamante}
 
 Esta ambiciosa competición está diseñada para impulsar los avances en el aprendizaje de refuerzo con muestras eficientes y con prejuicios humanos. El aprendizaje eficiente por muestreo es un reto clave, ya que los algoritmos actuales suelen requerir millones de muestras para aprender a realizar tareas concretas, lo que limita el alcance y la aplicabilidad de estos enfoques. Esta competición se basa en una tarea compleja, en datos de demostración a gran escala y en una configuración de evaluación que requiere y premia el aprendizaje eficiente de las muestras y la generalización efectiva. [\cite{hofmann2019minecraft}]
 
