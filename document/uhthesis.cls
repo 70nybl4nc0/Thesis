@@ -20,8 +20,8 @@
 \RequirePackage{footmisc}
 \RequirePackage{csquotes}
 \RequirePackage[
-	style=ieee,
-	citestyle=numeric,
+	style=apa,
+	citestyle=authoryear,
   hyperref=true,
 	backref=true
 	]{biblatex}
