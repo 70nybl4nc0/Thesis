@@ -4,7 +4,7 @@
 
 La idea de aprender interactuando con el entorno es probablemente lo primero que se piensa cuando se habla en la naturaleza del aprendizaje. Cuando un bebé juega, agita los brazos o mira a su alrededor, no tiene un maestro explícito, pero sí una conexión sensoriomotora directa con su entorno. El ejercicio de esta conexión produce una gran cantidad de información sobre la causa y el efecto, sobre las consecuencias de las acciones y sobre lo que hay que hacer para alcanzar los objetivos. A lo largo de su vida, estas interacciones son, sin duda, una importante fuente de conocimiento sobre el entorno y sobre ellos mismos. Tanto si aprenden a conducir un coche como a mantener una conversación, son consciente de cómo responde el entorno a lo que hacen, y tratan de influir en lo que ocurre a través de su comportamiento. El aprendizaje a partir de la interacción es una idea fundamental que subyace en casi todas las teorías del aprendizaje y la inteligencia y cualquier método que se adapte bien a la resolución de este tipo de problemas lo consideramos un método de aprendizaje por refuerzo.
 
-En inteligencia artificial la tarea básica del aprendizaje por refuerzo consiste en capturar los aspectos más importantes del problema al que se enfrenta un agente que interactúa con su entorno para lograr un objetivo. Está claro que un agente de este tipo debe ser capaz de percibir el estado del entorno hasta cierto punto y debe ser capaz de realizar acciones que afecten al estado. El agente también debe tener uno o varios objetivos relacionados con el estado del entorno. Los problemas de aprendizaje por refuerzo implican aprender qué hacer, o sea cómo asignar situaciones a acciones, para maximizar una señal de recompensa numérica. En esencia, se trata de problemas de bucle cerrado porque las acciones del sistema de aprendizaje influyen en sus entradas posteriores. Además, no se le dice al agente qué acciones debe tomar, como en muchas formas de aprendizaje automático, sino que debe descubrir qué acciones producen la mayor recompensa al probarlas [Fig. \ref{fig:rl-elements}). En los casos más interesantes y desafiantes, las acciones pueden afectar no sólo a la recompensa inmediata, sino también a la siguiente situación y, a través de ella, a todas las recompensas posteriores. (\cite{sutton1998introduction})
+En inteligencia artificial la tarea básica del aprendizaje por refuerzo consiste en capturar los aspectos más importantes del problema al que se enfrenta un agente que interactúa con su entorno para lograr un objetivo. Está claro que un agente de este tipo debe ser capaz de percibir el estado del entorno hasta cierto punto y debe ser capaz de realizar acciones que afecten al estado. El agente también debe tener uno o varios objetivos relacionados con el estado del entorno. Los problemas de aprendizaje por refuerzo implican aprender qué hacer, o sea cómo asignar situaciones a acciones, para maximizar una señal de recompensa numérica. En esencia, se trata de problemas de bucle cerrado porque las acciones del sistema de aprendizaje influyen en sus entradas posteriores. Además, no se le dice al agente qué acciones debe tomar, como en muchas formas de aprendizaje automático, sino que debe descubrir qué acciones producen la mayor recompensa al probarlas (Fig. \ref{fig:rl-elements}). En los casos más interesantes y desafiantes, las acciones pueden afectar no sólo a la recompensa inmediata, sino también a la siguiente situación y, a través de ella, a todas las recompensas posteriores. (\cite{sutton1998introduction})
 
 \begin{figure}[ht!]
     \centering
@@ -45,7 +45,7 @@ Los algoritmos de RL se pueden dividir utilizando varias categorizaciones, una d
 \begin{itemize}
 \item Los \textit{basados en el modelo} donde el agente que intenta comprender su entorno y crear un modelo del mismo basado en sus interacciones con él. En un sistema de este tipo, las preferencias tienen prioridad sobre las consecuencias de las acciones, es decir, el agente codicioso siempre intentará realizar una acción que le permita obtener la máxima recompensa, independientemente de lo que esa acción pueda causar. Algoritmos como \textit{Dyna} son un ejemplo.
 
-\item Por otro lado, como muestra la [Fig. \ref{fig:rl-strategies}), los algoritmos \textit{libres de modelo} buscan aprender las consecuencias de sus acciones directamente a travéz de la experiencia. En otras palabras, un algoritmo de este tipo llevará a cabo una acción varias veces y ajustará la política según sus resultados.
+\item Por otro lado, como muestra en (Fig. \ref{fig:rl-strategies}), los algoritmos \textit{libres de modelo} buscan aprender las consecuencias de sus acciones directamente a travéz de la experiencia. En otras palabras, un algoritmo de este tipo llevará a cabo una acción varias veces y ajustará la política según sus resultados.
 \end{itemize}
 
 Si el agente puede predecir (o simular) la recompensa de una acción antes de llevarla a cabo y, por tanto, planificar lo que debe hacer, el algoritmo está basado en un modelo. Mientras que si tiene que llevar a cabo la acción, o sea una experiencia real, para ver lo que ocurre y aprender de ello, no tiene modelo.
@@ -58,7 +58,7 @@ Si el agente puede predecir (o simular) la recompensa de una acción antes de ll
 \end{figure}
 
 
-Dentro de los algoritmos  \textit{libres de modelo} existe otra caracterización basada en si se construye explicitamente o no la política del agente.
+Dentro de los algoritmos  \textit{libres de modelo} existe otra caracterización basada en si se construye explicitamente o no la política del agente:
 
 \begin{itemize}
 \item En los métodos \textit{basados en políticas} se construye explícitamente una representación de una política y se mantiene en memoria durante el aprendizaje. Se puede citar los algoritmos de \textit{Policy Gradient}, \textit{Monte Carlos Tree Search}, entre otros.
@@ -70,13 +70,17 @@ Dentro de los algoritmos  \textit{libres de modelo} existe otra caracterización
 
 Los métodos on-policy intentan evaluar o mejorar la política que se utiliza para tomar las decisiones, mientras que los métodos off-policy evalúan o mejoran una política diferente a la utilizada para generar los datos. En el primer caso, el agente aprende la función de valor de la política que sigue en ese momento, mientras que en el segundo caso aprende la función de valor de la política que considera mejor en ese momento. Estas dos políticas suelen ser diferentes debido a la necesidad de explorar.
 
-Existen otros tipos de algoritmos de aprendizaje por reforzamiento, como los geneticos o evolutivos, por imitación, entre otros; pero seran omitidos para la simplicidad del documento.
+\subsection{Aprendizaje profundo por reforzamiento}
+
+El aprendizaje profundo por refuerzo (Deep RL) es un subcampo del aprendizaje automático que combina el aprendizaje por refuerzo (RL) y el aprendizaje profundo. Incorpora el aprendizaje profundo a la solución, lo que permite a los agentes tomar decisiones a partir de datos de entrada no estructurados sin necesidad de ingeniería manual del espacio de estados. Los algoritmos de RL profunda son capaces de tomar datos de entrada muy grandes (por ejemplo, cada píxel representado en la pantalla de un videojuego) y decidir qué acciones realizar para optimizar un objetivo (por ejemplo, maximizar la puntuación del juego). (\cite{franccois2018introduction})
+
+La mayoria de los experimientos que probaron las pruebas descritas en \ref{section:state-of-the-art:evaluation-enviroments-for-generalization-on-rl-algoritms} tanto como los usados en las experimentaciones de la solución que se presentará son de este tipo de algoritmos.
 
 \section{Generalizacion en machine learning}\label{section:state-of-the-art:generalization-on-machine-learning}
 
 La generalización es la capacidad de manejar situaciones (o tareas) que difieren de las situaciones anteriores. En inteligencia artificial se caracteriza como el rendimiento de un modelo en entradas que no formaban parte de sus datos de entrenamiento.
 
-La capacidad generalización se basa fundamentalmente en las nociones relacionadas a la novedad e incertidumbre. Un sistema sólo puede generalizar ante información nueva que no pueda ser conocida de antemano ni por el sistema o por su creador. Dicha capacidad puede se pone en evidencia a medida que aumenta el dominio de las tareas y problemas que se pueden manejar. Para entender mejor estas nociones se definirán varios conceptos a continuación.
+La capacidad generalización se basa fundamentalmente en las nociones relacionadas a la novedad e incertidumbre. Un sistema sólo puede generalizar ante información nueva que no pueda ser conocida de antemano ni por el sistema o por su creador. Dicha capacidad puede se pone en evidencia a medida que aumenta el dominio de las tareas y problemas que se pueden manejar (\cite{chollet2019measure}).
 
 \subsection{Tipos de Generalizacion}
 
@@ -89,7 +93,7 @@ La capacidad generalización se basa fundamentalmente en las nociones relacionad
 
 \subsection{Grados de Generalizacion}
 
-Aunque los límites entre los grados de la escala de generalización son mayormente difusos y continuos, se ha agrupado en 4 niveles fundamentales de interés para el estudio:
+Aunque los límites entre los grados de la escala de generalización son mayormente difusos y continuos, se ha agrupado en 4 niveles fundamentales de interés para el estudio (\cite{chollet2019measure}):
 
 \begin{itemize}
 \item \textit{Ausencia de generalización:} Los sistemas de IA en los que no hay incertidumbre no muestran generalización. Por ejemplo, no se puede decir que un programa que juega a 4 en Línea mediante una iteración exhaustiva generalice a todas las configuraciones del tablero.
@@ -101,10 +105,10 @@ Aunque los límites entre los grados de la escala de generalización son mayorme
 \item \textit{Generalización extrema:} Describe los sistemas abiertos con la capacidad de abordar tareas completamente nuevas que sólo comparten puntos comunes abstractos con situaciones previamente encontradas, aplicables a cualquier tarea y dominio dentro de un amplio alcance. Esto podría caracterizarse como adaptación a incógnitas desconocidas en una gama desconocida de tareas y dominios. Las formas biológicas de inteligencia (los humanos y posiblemente otras especies in- telligentes) son el único ejemplo de un sistema de este tipo en este momento.
 \end{itemize}
 
-A esta lista podríamos, en teoría, añadir una entrada más: \textit{La universalidad}, que extendería la generalidad más allá del ámbito de las tareas relevantes para los humanos, a cualquier tarea que pueda ser abordada de forma práctica dentro de nuestro universo (nótese que esto es diferente de cualquier tarea en absoluto, tal y como se entiende en los supuestos del teorema \textit{No Free Lunch}). 
-% TODO: find reference to No Free Lunch
+A esta lista podríamos, en teoría, añadir una entrada más: \textit{La universalidad}, que extendería la generalidad más allá del ámbito de las tareas relevantes para los humanos, a cualquier tarea que pueda ser abordada de forma práctica dentro de nuestro universo (nótese que esto es diferente de cualquier tarea en absoluto, tal y como se entiende en los supuestos del teorema \textit{No Free Lunch} (\cite{wolpert1997no})).
 
 Es importante destacar que el espectro de la generalización descrito anteriormente parece reflejar la organización de las capacidades cognitivas de los seres humanos tal y como se establece en las teorías de la estructura de la inteligencia en la psicología cognitiva donde se define el \textit{factor g} como una razón global y presente en el nivel de inteligencia del hombre. 
+iv
 
 \begin{figure}[ht!]
     \centering
@@ -129,33 +133,65 @@ Las medidas de rendimiento que cuantifican la habilidad de un sistema en una tar
 
 Los \textit{Benchmarks}, en particular, han sido un importante motor de progreso en la IA, porque son reproducibles (el conjunto de pruebas es fijo), justos (el conjunto de pruebas es el mismo para todos), escalables (es barato realizar la evaluación muchas veces), fáciles de configurar y lo suficientemente flexibles como para ser aplicables a una amplia gama de tareas posibles. Los puntos de referencia han sido a menudo más impactantes en el contexto de una competición entre diferentes equipos de investigación.
 
-La robustez de los sistemas que se desarrollan, en particular los modelos de Deep Learning, suele ser problemática. Esto se debe en gran parte al hecho de que la mayoría de los benchmarks no prestan mucha atención a la evaluación formal de la robustez y a la cuantificación de la generalización, y por lo tanto pueden ser resueltos a través de atajos que el descenso de gradiente es apto para explotar. La generalización entre tareas sigue siendo difícil para los algoritmos de aprendizaje profundo por refuerzo más avanzados. Aunque los agentes entrenados pueden resolver tareas complejas, les cuesta transferir su experiencia a nuevos entornos. Los agentes que dominan diez niveles de un videojuego suelen fracasar estrepitosamente cuando se enfrentan por primera vez al undécimo. Los humanos pueden generalizar sin problemas en tareas similares, pero esta capacidad está ausente en los agentes de la realidad virtual. En resumen, los agentes se especializan demasiado en los entornos encontrados durante el entrenamiento (\cite{cobbe2019quantifying}). A este fenómeno se le denomina sobre  \textit{overfitting}. Se reconoce ampliamente que los agentes de RL son propensos a la sobreadaptación (\cite{zhang2018study}), pero los puntos de referencia de RL más comunes siguen fomentando el entrenamiento y la evaluación en el mismo conjunto de entornos. (\cite{nichol2018gotta}) 
+La robustez de los sistemas que se desarrollan, en particular los modelos de Deep Learning, suele ser problemática. Esto se debe en gran parte al hecho de que la mayoría de los benchmarks no prestan mucha atención a la evaluación formal de la robustez y a la cuantificación de la generalización, y por lo tanto pueden ser resueltos a través de atajos que el descenso de gradiente es apto para explotar. La generalización entre tareas sigue siendo difícil para los algoritmos de aprendizaje profundo por refuerzo más avanzados. Aunque los agentes entrenados pueden resolver tareas complejas, les cuesta transferir su experiencia a nuevos entornos. Los agentes que dominan diez niveles de un videojuego suelen fracasar estrepitosamente cuando se enfrentan por primera vez al undécimo. Los humanos pueden generalizar sin problemas en tareas similares, pero esta capacidad está ausente en los agentes de la realidad virtual. En resumen, los agentes se especializan demasiado en los entornos encontrados durante el entrenamiento (\cite{cobbe2019quantifying}). A este fenómeno se le denomina sobre \textit{overfitting}. Se reconoce ampliamente que los agentes de RL son propensos a la sobreadaptación (\cite{zhang2018study}), pero los puntos de referencia de RL más comunes siguen fomentando el entrenamiento y la evaluación en el mismo conjunto de entornos. (\cite{nichol2018gotta}) 
 
 \section{Una buena evaluacion de Inteligencia}\label{section:state-of-the-art:a-good-measure-of-inteligence}
 
-La base de la inteligencia. Los prejuicios y las experiencias.
+\subsection{¿Qué es la Inteligencia?}
+Existen muchas definiciones posibles de inteligencia, varían segun el campo de estudio y pueden ser válidas en muchos contextos diferentes. En este documento la definición que nos es útil y medible se puede definir de la siguiente manera:
 
-Tipos de prejuicios y experiencias a considerar:
-- **Premisas de bajo nivel**: Conocimientos sobre nuestro propio espacio sensoriomotor. Reflejos e instintos inatos.
-- **Premisas de metaaprendizaje**: Rigen nuestras estrategias de aprendizaje y capacidades de adquisición de conocimientos.
-- **Conocimientos previos de alto nivel**: Conocimientos sobre los objetos y fenómenos de nuestro entorno externo.
+\begin{quote}
+    La inteligencia de un sistema es una medida de su eficiencia en la adquisición de habilidades sobre un ámbito de tareas, con respecto a los antecedentes, la experiencia y la dificultad de generalización.
+\end{quote}
 
-Las premisas de metraaprendizaje son objetivo de esta ciencia. Es la inteligencia en si misma. Entender como el cerebro transforma experiencias en conocimientos y habilidades.
+Esta definición de inteligencia engloba el metaaprendizaje de los conocimientos previos, la memoria y la inteligencia fluida. Es distinta de la destreza en sí misma: la destreza no es más que el resultado del proceso de la inteligencia. El propósito de esta definición es ser procesable, servir como un cambio de perspectiva útil para la investigación de amplias capacidades cognitivas, y funcionar como una base cuantitativa para nuevos puntos de referencia de inteligencia general (\cite{chollet2019measure}).
 
-La comparación entre dos sistemas debe ser JUSTA teniendo en cuenta los **Conocimientos previos de alto nivel** que posean. 
+\subsection{Inteligencia en la perspectiva antropocéntrica}
+
+Un punto central de este documento es que la inteligencia general no es una propiedad binaria que un sistema posee o carece. Se trata de un espectro, ligado a: un ámbito de aplicación, que puede ser más o menos amplio, el grado de eficacia con el que el sistema traduce sus conocimientos previos y su experiencia en nuevas habilidades en el ámbito considerado, y por último al grado de dificultad de generalización que representan los distintos puntos del ámbito considerado. Además, el "valor" de un ámbito de aplicación sobre otro es totalmente subjetivo; no nos interesaría (y ni siquiera percibiríamos como inteligente) un sistema cuyo ámbito de aplicación no tuviera ninguna intersección con el nuestro. (\cite{chollet2019measure})
+
+La investigación sobre el desarrollo de la amplitud de los sistemas de IA (hasta llegar a la IA genérica, es decir, la IA con un grado de generalidad comparable al de la inteligencia humana) se centre en definir, medir y desarrollar una forma de inteligencia específicamente similar a la humana (\cite{goertzel2012architecture}), y que se compare el progreso específicamente con la inteligencia humana (que es en sí misma altamente especializada). Esto no se debe a que creamos que la inteligencia que difiere en gran medida de la nuestra no pueda existir o no tenga valor; más bien, reconocemos que la caracterización y la medición de la inteligencia es un proceso que debe estar vinculado a un ámbito de aplicación bien definido, y en este momento, el espacio de las tareas relevantes para el ser humano es el único ámbito que podemos abordar y evaluar de forma significativa. Por lo tanto, al contratio de otras perspectivas, como la Psicometría Universal (\cite{hernandez2014universal}) o la Inteligencia Universal (\cite{legg2007universal}), que rechazan por completo el antropocentrismo y pretenden medir toda la inteligencia con una única escala absoluta. Un marco de referencia antropocéntrico no sólo es legítimo, sino necesario. (\cite{chollet2019measure})
+
+La comparación entre dos sistemas inteligentes debe ser justa, teniendo en cuenta los prejuicios y experiencias que ambos poseen. Por esto se hace necesario separar los elementos del conocimiento de forma tal que puedan ser comparables. En el caso de los humanos una forma particular de verlo seria la siguiente:
+
+\begin{itemize}
+    \item \textbf{Prejuicios de bajo nivel}: Conocimientos sobre nuestro propio espacio sensoriomotor. Reflejos e instintos inatos.
+    \item \textbf{Prejuicios de metaaprendizaje}: Rigen nuestras estrategias de aprendizaje y capacidades de adquisición de conocimientos. Es la inteligencia en si misma. La forma en que se transforma experiencias en conocimientos y habilidades.
+    \item \textbf{Conocimientos previos de alto nivel}: Conocimientos sobre los objetos y fenómenos de nuestro entorno externo.
+\end{itemize}
+
+Estos prejuicios no son una limitación a nuestra capacidad de generalización; al contrario, son su fuente, la razón por la que los humanos son capaces de adquirir ciertas categorías de habilidades con una eficiencia notable. El mensaje central del teorema No Free Lunch (\cite{wolpert1997no}) es que para aprender de los datos hay que hacer suposiciones sobre ellos: la naturaleza y la estructura de las suposiciones innatas que hace la mente humana son precisamente las que le confieren sus poderosas capacidades de aprendizaje. 
+
+\subsection{¿Cuál es la lista exacta de conocimientos previos con los que nacen los humanos?}
+
+El Conocimiento Básico identifica cuatro amplias categorías de supuestos innatos que forman los cimientos de la cognición humana  (\cite{spelke2007core}), y que son compartidos en gran medida por nuestros parientes no humanos.
+
+\begin{itemize}
+
+\item Objetualidad y física elemental: el ser humano supone que su entorno debe dividirse en objetos caracterizados por los principios de cohesión (los objetos se mueven como conjuntos continuos, conectados y delimitados), persistencia (los objetos no dejan de existir repentinamente y no se materializan de repente) y contacto (los objetos no actúan a distancia y no pueden interpenetrarse).
+
+\item Agilidad y dirección de objetivos: los seres humanos suponen que, mientras que algunos objetos de su entorno son inanimados, otros son "agentes", que poseen intenciones propias, que actúan para alcanzar objetivos (por ejemplo, si vemos que un objeto A sigue a otro objeto B en movimiento, podemos deducir que A persigue a B y que B huye de A), y que muestran eficacia en sus acciones dirigidas a objetivos. Esperamos que estos agentes actúen de forma contingente y recíproca.
+
+\item Números naturales y aritmética elemental: los seres humanos poseen representaciones numéricas innatas y abstractas para los números pequeños, que pueden aplicarse a entidades observadas a través de cualquier modalidad sensorial. Estas representaciones numéricas pueden sumarse o restarse, y pueden compararse entre sí u ordenarse.
+
+\item Geometría y topología elementales: este sistema de conocimiento básico recoge las nociones de distancia, orientación y relaciones de entrada y salida de los objetos de nuestro entorno y de nosotros mismos. Es la base de la facilidad innata de los seres humanos para orientarse con respecto a su entorno y navegar por entornos 2D y 3D.
+\end{itemize}
 
 
-Tambien debe considerarse el **Ambito de tareas compartido** entre los sistemas a comparar. Y el grado de especializacion que son alcanzables en ese ambito.
+\subsection{Caracteristicas de una buena evaluación de inteligencia en esta perspectiva}
 
-Caracteristicas necesarias para una evaluacion de inteligencia extrema:
-- Debe describir el Ambito de la evaluacion
-- Replicable o Repoducible.
-- No debe limitase a la habilidad en una tarea.
-- Debe contener tareas no conocidas por los desarrolladores.
-- Controlar la cantidad de experiencia que se brinda.
-- Definir el conjunto de premisas de Conocimiento previo.
-- Deberia funcionar para humanos y maquinas.
-- Debe justificar la dificultad de generalizacion
+Para lograr un proceso de evaluación justo es necesario definir, tomando lo planteado en las secciones anteriores, las caracteristicas que cumpla todo entorno de evaluación de inteligencia con capacidades de generalizacion extremas:
+
+\begin{itemize}
+\item Debe describir el Ambito de la evaluacion: las tareas deben ser realizables de forma similar. Respetando las destrezas que se puedan expresar.
+\item Replicable o Repoducible.
+\item No debe limitase a la habilidad en una tarea, sino a la evaluación de la adquisición de nuevas habilidades y el uso de estas para resolver nuevas tareas.
+\item Debe contener tareas no conocidas por los desarrolladores.
+\item Controlar la cantidad de experiencia que se brinda para que sean manifiestas las habilidades cognitivas abstractas.
+\item Definir el conjunto de premisas de Conocimiento previo de forma explicita y acorde a los fundamentos antropocentricos planteados.
+\item Debe funcionar para humanos y maquinas para crear un punto de comparación válido.
+\item Debe justificar la dificultad de generalizacion entre las pruebas.
+\end{itemize}
 
 \section{Entornos de evaluacion de Inteligencia}\label{section:state-of-the-art:inteligence-evaluation-enviroments}
 
@@ -164,28 +200,43 @@ Caracteristicas necesarias para una evaluacion de inteligencia extrema:
 Las primeras ideas para evaluacion eran por Revision humana y tenian un caracter Antropocéntrico.
 
 \subsubsection{Juego de Imitación}
-% - **Juego de Imitación** (Test de Turing), explicacion.
+
+El juego original descrito por Turing es una prueba de la capacidad de una máquina para mostrar un comportamiento inteligente equivalente o indistinguible del de un ser humano. Proponía un juego que involucraba tres participantes: el jugador A es un hombre, el jugador B es una mujer y el interrogador. En el juego, el interrogador no tiene contacto visual con ninguno de los otros jugadores y se puede comunicar con ellos por medio de notas escritas. Al hacerles preguntas, el interrogador intenta determinar cuál de los dos es el hombre y cual la mujer. El jugador A intentará engañar al interrogador haciéndole escoger erróneamente mientras que el jugador B le auxiliará al interrogador en escoger al jugador correcto. 
+
+Turing propuso que el rol del jugador A lo cumpliera una computadora para que esta tuviera que pretender ser mujer e intentara guiar al interrogador a la respuesta incorrecta. El éxito de la computadora sería determinado al comparar el resultado del juego cuando el jugador A es la computadora junto con el resultado del juego cuando el jugador A es un hombre. Turing afirmó que si “el interrogador decide erróneamente tan frecuentemente cuando el juego es jugado con la computadora, como cuando el juego es jugado entre un hombre y una mujer, se podría argumentar que la computadora es inteligente. (\cite{pinar2000turing})
 
 \subsubsection{Prueba del Café}
-% - **Prueba del Café**, explicacion.
 
-\subsubsection{Pruebas psicometricas}
-% - **Pruebas psicometricas**, explicacion.
+Consiste en que la máquina demuestre la capacidad de poder acceder una cocina al azar y preparar una taza de café. De este modo, la máquina debe ser capaz de localizar la cafetera, encontrar el café, poner agua, encontrar una taza, y toda una serie de pequeñas operaciones que para un ser humano resultan incluso intuitivas, pero que para una máquina requieren una gran cantidad de cálculos.
 
-Comentar sobre la inefectividad y los problemas que trae hacer evaluaciones con supervision. (Mencionar las buenas practicas para evaluaciones de mas adelante)
+La prueba fue desarrollada por Ben Goertzel , un investigador pionero en el estudio de la inteligencia artificial general, y pone en evidencia la llamada paradoja de Moravec (\cite{rotenberg2013moravec}): algunas tareas que son difíciles para los seres humanos (como multiplicar cifras muy altas) no entrañan ninguna dificultad para una máquina, pero otras acciones muy simples, incluso realizables por un niño, como doblar la ropa, requieren grandes cantidades de cálculos.
 
-\subsection{Otas propuestas de evaluación}
+Existen otras prueba propuestas por Goertzel, en una de ellas un estudiante universitario robot se debe matricular en una universidad, tomar y apruebar las mismas clases que los humanos y obtiener un título.
 
-La actual tendencia de investigadores por desarrollar algoritmos de proposito general.  
+\subsubsection{The bica cognitive decathlon}
 
-Ejemplos de algunas evaluaciones mas modernas pero no se implementaron.
+BICA (Biologically-Inspired Cognitive Architectures) (\cite{mueller2007bica}) tiene como objetivo la generación de modelos de arquitectura cognitiva basados en principios de la psicología y la neurociencia. 
 
-\subsubsection{The bica cognitive decathlon (2004)}
+Este proyecto está motivado por la creencia de que la investigación tradicional sobre inteligencia artificial se ha topado con un muro en su intento de desarrollar agentes verdaderamente inteligentes. Aunque los agentes pueden ser diseñados para realizar tareas específicas de forma excelente, suelen ser bastante frágiles, incapaces de enfrentarse a situaciones imprevistas y de aprender de otros. 
+
+Un conjunto de pruebas ha sido diseñado para evaluar el rendimiento de dichos agentes en una variedad de situaciones que cubren algunas habilidades básicas cognitivas, perceptivas y motoras, típicas de un niño humano de dos años. Estas incluyen tareas de comportamiento relacionadas con la búsqueda, la navegación, la manipulación, la memoria, el lenguaje y tres vías de conocimiento procedimental: instrucción, demostración y exploración.
+
+Las pruebas tienen tres componentes distintos: un total de cuatro escenarios de retos integradores que apoyan los objetivos de construcción de agentes cognitivos coherentes, sistemáticos e integrados; un conjunto de tareas enfocadas que pueden determinar mejor hasta qué punto las competencias cognitivas básicas coincide con las capacidades de los humanos; y evaluaciones de biovalidez para determinar hasta qué punto la arquitectura de los agentes se asemeja al cerebro humano.
+ 
+Estos exámenes de tres niveles se diseñaron para comprobar si los sistemas son flexibles, completos y capaces de realizar tareas en situaciones complejas, sin dejar de hacerlas de forma similar a los humanos.
 
 \subsubsection{Olimpiadas de Turing (2014)}
 
-(\cite{beyret2019animal})
+Un grupo de expertos en inteligencia artificial se reunieron para discutir cómo avanzar más allá del test de Turing, en el marco de la conferencia AAAI de inteligencia artificial en Austin, Texas. Asumieron la tarea de elaborar un \textit{campeonato de Turing} con un nuevo conjunto de desafíos que ayuden a desarrollar la investigación de AI. La idea de este grupo de trabajo es desarrollar una serie de desafíos que puedan evaluar diferentes tipos de inteligencia, más que una simple prueba de Turing.
+\begin{itemize}
+    \item Test de Ikea: Un robot que sea capaz de armar muebles tan solo leyendo las instrucciones, debe ser capaz de ver las partes, interpretar las instrucciones y eventualmente tener las habilidades motoras para unirlas, guiado por un programa de AI. Esto tiene varias etapas y podría comenzar con simulaciones antes de empezar con robots reales.
 
+    \item El esquema de Winograd: Una prueba basada en el lenguaje que requiere algo como el sentido común de los humanos. Fue propuesto por el científico computacional Hector Levesque en 2011. Los esquemas de Winograd les dan una frase a los participantes, luego formulan una simple pregunta sobre esa frase. Son preguntas son muy fáciles para los humanos, pero requieren una comprensión del lenguaje relativamente profunda. Descritas como frases que no puedes entender a menos que entiendas el mundo.
+    
+    \item Una tercera prueba fue sugerida por Gary Marcus, un profesor de psicología en NYU, propuso pedirle a un computador que viera un video que no haya visto antes y hacerle preguntas sobre él. Preguntas al estilo: ¿Por qué Rusia invadió Crimea? o ¿Por qué Walter White quiso matar a Jessie?. Es decir, crear un evento donde una maquina pueda responder "preguntas periodísticas" sobre imágenes, video y audio.
+
+    \item Otras ideas que salieron del encuentro fue desafiar a una AI a jugar un nuevo videojuego como si fuera un niño de 12 años, o decirle a un profesor digital que aprenda un nuevo tópico y lo enseñe igual (o mejor) que un humano.
+\end{itemize}
 
 \subsection{Entornos de evaluación con tareas conocidas}\label{section:state-of-the-art:inteligence-evaluation-enviroments:evaluation-enviroments-with-know-tasks}
 
@@ -244,7 +295,24 @@ La lógica de generación procedural rige el diseño de los niveles, la selecci�
 
 Para facilitar la ejecución Procgen presenta un espacio fijo de observaciones y acciones. Contando observaciones de tamaño $64*64*3(RGB)$ y $15$ acciones posibles, donde cada entorno define cuales de estas son aplicables. (\cite{cobbe2020leveraging})
 
-Otro ejemplo similar, \textbf{Obstacle Tower} (\cite{juliani2019obstacle}) es un nuevo juego en 3D basado en la venganza de Moctezuma, uno de los juegos Atari más difíciles (para la IA), cuyas fases se generan de forma procedural. 
+Otro ejemplo similar, \textbf{Obstacle Tower} (\cite{juliani2019obstacle}) es un nuevo juego en 3D basado en la venganza de Moctezuma \ref{fig:tower}, uno de los juegos Atari más difíciles (para la IA), cuyas fases se generan de forma procedural. 
+
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}
+      \centering
+      \includegraphics[width=0.4\textwidth]{Graphics/tower-1.jpeg}
+      \label{fig:tower1}
+    \end{subfigure}%
+    \begin{subfigure}
+      \centering
+      \includegraphics[width=0.4\textwidth]{Graphics/tower-2.jpeg}
+      \label{fig:tower2}
+    \end{subfigure}%
+    \caption{Niveles de Obstacle Tower}
+    \label{fig:tower}
+\end{figure}
 
 \begin{figure}[ht!]
     \centering
@@ -255,15 +323,18 @@ Otro ejemplo similar, \textbf{Obstacle Tower} (\cite{juliani2019obstacle}) es un
 
 \subsection{The Animal-AI Environment}
 
+(\cite{beyret2019animal})
+
 \begin{figure}[ht!]
+    \centering
     \begin{subfigure}
       \centering
-      \includegraphics[width=0.5\textwidth]{Graphics/animal_1.png}
+      \includegraphics[width=0.4\textwidth]{Graphics/animal_1.png}
       \label{fig:animal1}
     \end{subfigure}%
     \begin{subfigure}
       \centering
-      \includegraphics[width=0.5\textwidth]{Graphics/animal_3.png}
+      \includegraphics[width=0.4\textwidth]{Graphics/animal_3.png}
       \label{fig:animal2}
     \end{subfigure}%
     \caption{Niveles de Animal IA-Enviroment. A la izquierda X a la derecha Y.}
@@ -272,6 +343,23 @@ Otro ejemplo similar, \textbf{Obstacle Tower} (\cite{juliani2019obstacle}) es un
 
 
 \section{Project Malmo, un meta-entorno de pruebas en Minecraft}\label{section:state-of-the-art:project-malmO}
+
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}
+      \centering
+      \includegraphics[width=0.4\textwidth]{Graphics/malmo-1.jpeg}
+      \label{fig:malmo1}
+    \end{subfigure}%
+    \begin{subfigure}
+      \centering
+      \includegraphics[width=0.4\textwidth]{Graphics/malmo-2.jpeg}
+      \label{fig:malmo2}
+    \end{subfigure}%
+    \caption{Proyecto Malmo de Microsoft}
+    \label{fig:malmo}
+\end{figure}
 
 Ambito de evaluacion.
 
