@@ -36,7 +36,7 @@ Una tarea de aprendizaje por refuerzo que satisface la propiedad de Markov se de
 
 La interacción agente-entorno se descompone naturalmente en una secuencia de episodios separados (tareas episódicas), y otra en la que no (tareas continuas). El primer caso es matemáticamente más fácil porque cada acción afecta sólo al número finito de recompensas recibidas posteriormente durante el episodio. (\cite{wiering2012reinforcement})
 
-\subsection{Principales estrategias para resolver problemas de aprendizaje por refuerzo}
+\subsection{Métodos para resolver problemas de aprendizaje por refuerzo}
 
 El objetivo de la RL es que el agente aprenda a navegar por el entorno para maximizar una métrica de recompensa acumulada. La política es como el algoritmo que el agente perfecciona para maximizar la recompensa. Por tanto el objetivo de la RL es construir la política que máximice la recompensa acumulada, al menos de forma implícita. (\cite{sutton1998introduction})
 
@@ -90,7 +90,6 @@ La capacidad generalización se basa fundamentalmente en las nociones relacionad
 \item \textit{Generalización consciente del desarrollador:} es la capacidad de un sistema, ya sea de aprendizaje o estático, para manejar situaciones que ni el sistema ni el desarrollador del sistema han encontrado antes.
 \end{itemize}
 
-
 \subsection{Grados de Generalizacion}
 
 Aunque los límites entre los grados de la escala de generalización son mayormente difusos y continuos, se ha agrupado en 4 niveles fundamentales de interés para el estudio (\cite{chollet2019measure}):
@@ -117,7 +116,7 @@ iv
     \label{fig:g-factor}
 \end{figure}
 
-\section{Evaluación de algoritmos}\label{section:state-of-the-art:evaluating-algoritms}
+\section{Metodos para la evaluación de algoritmos de aprendizaje automático}\label{section:state-of-the-art:evaluating-algoritms}
 
 Las medidas de rendimiento que cuantifican la habilidad de un sistema en una tarea determinada han impulsado el exito de la inteligencia artificial. No existe una forma única y formalizada de realizar una evaluación basada en la destreza. Entre los enfoques que han tenido éxito históricamente se encuentran:
 
@@ -195,25 +194,21 @@ Para lograr un proceso de evaluación justo es necesario definir, tomando lo pla
 
 \section{Entornos de evaluacion de Inteligencia}\label{section:state-of-the-art:inteligence-evaluation-enviroments}
 
-\subsection{Primeras pruebas propuestas}
-
-Las primeras ideas para evaluacion eran por Revision humana y tenian un caracter Antropocéntrico.
-
-\subsubsection{Juego de Imitación}
+\subsection{Juego de Imitación}
 
 El juego original descrito por Turing es una prueba de la capacidad de una máquina para mostrar un comportamiento inteligente equivalente o indistinguible del de un ser humano. Proponía un juego que involucraba tres participantes: el jugador A es un hombre, el jugador B es una mujer y el interrogador. En el juego, el interrogador no tiene contacto visual con ninguno de los otros jugadores y se puede comunicar con ellos por medio de notas escritas. Al hacerles preguntas, el interrogador intenta determinar cuál de los dos es el hombre y cual la mujer. El jugador A intentará engañar al interrogador haciéndole escoger erróneamente mientras que el jugador B le auxiliará al interrogador en escoger al jugador correcto. 
 
 Turing propuso que el rol del jugador A lo cumpliera una computadora para que esta tuviera que pretender ser mujer e intentara guiar al interrogador a la respuesta incorrecta. El éxito de la computadora sería determinado al comparar el resultado del juego cuando el jugador A es la computadora junto con el resultado del juego cuando el jugador A es un hombre. Turing afirmó que si “el interrogador decide erróneamente tan frecuentemente cuando el juego es jugado con la computadora, como cuando el juego es jugado entre un hombre y una mujer, se podría argumentar que la computadora es inteligente. (\cite{pinar2000turing})
 
-\subsubsection{Prueba del Café}
+\subsection{Prueba del Café}
 
 Consiste en que la máquina demuestre la capacidad de poder acceder una cocina al azar y preparar una taza de café. De este modo, la máquina debe ser capaz de localizar la cafetera, encontrar el café, poner agua, encontrar una taza, y toda una serie de pequeñas operaciones que para un ser humano resultan incluso intuitivas, pero que para una máquina requieren una gran cantidad de cálculos.
 
-La prueba fue desarrollada por Ben Goertzel , un investigador pionero en el estudio de la inteligencia artificial general, y pone en evidencia la llamada paradoja de Moravec (\cite{rotenberg2013moravec}): algunas tareas que son difíciles para los seres humanos (como multiplicar cifras muy altas) no entrañan ninguna dificultad para una máquina, pero otras acciones muy simples, incluso realizables por un niño, como doblar la ropa, requieren grandes cantidades de cálculos.
+La prueba fue desarrollada por Wozniak, un investigador pionero en el estudio de la inteligencia artificial general, y pone en evidencia la llamada paradoja de Moravec (\cite{rotenberg2013moravec}): algunas tareas que son difíciles para los seres humanos (como multiplicar cifras muy altas) no entrañan ninguna dificultad para una máquina, pero otras acciones muy simples, incluso realizables por un niño, como doblar la ropa, requieren grandes cantidades de cálculos.
 
 Existen otras prueba propuestas por Goertzel, en una de ellas un estudiante universitario robot se debe matricular en una universidad, tomar y apruebar las mismas clases que los humanos y obtiener un título.
 
-\subsubsection{The bica cognitive decathlon}
+\subsection{The bica cognitive decathlon}
 
 BICA (Biologically-Inspired Cognitive Architectures) (\cite{mueller2007bica}) tiene como objetivo la generación de modelos de arquitectura cognitiva basados en principios de la psicología y la neurociencia. 
 
@@ -225,7 +220,7 @@ Las pruebas tienen tres componentes distintos: un total de cuatro escenarios de 
  
 Estos exámenes de tres niveles se diseñaron para comprobar si los sistemas son flexibles, completos y capaces de realizar tareas en situaciones complejas, sin dejar de hacerlas de forma similar a los humanos.
 
-\subsubsection{Olimpiadas de Turing (2014)}
+\subsection{Olimpiadas de Turing}
 
 Un grupo de expertos en inteligencia artificial se reunieron para discutir cómo avanzar más allá del test de Turing, en el marco de la conferencia AAAI de inteligencia artificial en Austin, Texas. Asumieron la tarea de elaborar un \textit{campeonato de Turing} con un nuevo conjunto de desafíos que ayuden a desarrollar la investigación de AI. La idea de este grupo de trabajo es desarrollar una serie de desafíos que puedan evaluar diferentes tipos de inteligencia, más que una simple prueba de Turing.
 \begin{itemize}
@@ -238,14 +233,6 @@ Un grupo de expertos en inteligencia artificial se reunieron para discutir cómo
     \item Otras ideas que salieron del encuentro fue desafiar a una AI a jugar un nuevo videojuego como si fuera un niño de 12 años, o decirle a un profesor digital que aprenda un nuevo tópico y lo enseñe igual (o mejor) que un humano.
 \end{itemize}
 
-\subsection{Entornos de evaluación con tareas conocidas}\label{section:state-of-the-art:inteligence-evaluation-enviroments:evaluation-enviroments-with-know-tasks}
-
-Por lo general utilizan amplias baterías de tareas de prueba para evaluar sistemas que buscan una mayor flexibilidad. En estos entornos los desarrolladores del sistema evaluado conocen de antemano el tipo de tareas que enfrentarán, solo que los escenarios varian tantos que resolver dichas tareas requerirán diferentes formas de razonamiento y creatividad, expresion directa de la generalización a partir de su entrenamiento.
-
-La lógica subyacente de estos esfuerzos es medir algo más general que la habilidad en una tarea específica ampliando el conjunto de tareas objetivo. Sin embargo, cuando se trata de evaluar la flexibilidad, un defecto crítico de estos puntos de referencia multitarea es que el conjunto de tareas sigue siendo conocido de antemano por los desarrolladores de cualquier sistema de realización de pruebas, y se espera que los sistemas de realización de pruebas sean capaces de practicar específicamente para las tareas objetivo, aprovechar el conocimiento previo incorporado específico de la tarea heredado de los desarrolladores del sistema, aprovechar el conocimiento externo obtenido a través del preentrenamiento, etc.
-
-Medir únicamente la destreza en una tarea determinada no es suficiente para medir la inteligencia, porque la destreza está fuertemente modulada por el conocimiento previo y la experiencia: los datos de entrenamiento ilimitados permiten a los experimentadores comprar niveles arbitrarios de destreza para un sistema, de forma que se enmascara el propio poder de generalización del sistema.
-% TODO: citar openIA con sus sistemas para jugar Dota etc
 
 \section{Entornos de evaluacion de la capacidad de generalizacion en algoritmos RL}\label{section:state-of-the-art:evaluation-enviroments-for-generalization-on-rl-algoritms}
 
@@ -271,12 +258,12 @@ El entorno CoinRun tiene como proposito evaluar el rendimiento de la genalizaci�
 \begin{figure}[ht!]
     \begin{subfigure}
       \centering
-      \includegraphics[width=0.5\textwidth]{Graphics/coinrun_1.jpeg}
+      \includegraphics[width=0.4\textwidth]{Graphics/coinrun_1.jpeg}
       \label{fig:coinrun1}
     \end{subfigure}%
     \begin{subfigure}
       \centering
-      \includegraphics[width=0.5\textwidth]{Graphics/coinrun_2.jpeg}
+      \includegraphics[width=0.4\textwidth]{Graphics/coinrun_2.jpeg}
       \label{fig:coinrun2}
     \end{subfigure}%
     \caption{Niveles de CoinRun con diferente dificultad}
@@ -295,7 +282,7 @@ La lógica de generación procedural rige el diseño de los niveles, la selecci�
 
 Para facilitar la ejecución Procgen presenta un espacio fijo de observaciones y acciones. Contando observaciones de tamaño $64*64*3(RGB)$ y $15$ acciones posibles, donde cada entorno define cuales de estas son aplicables. (\cite{cobbe2020leveraging})
 
-Otro ejemplo similar, \textbf{Obstacle Tower} (\cite{juliani2019obstacle}) es un nuevo juego en 3D basado en la venganza de Moctezuma \ref{fig:tower}, uno de los juegos Atari más difíciles (para la IA), cuyas fases se generan de forma procedural. 
+Entre los de entornos similares se encuentran \textbf{OpenIA Gym} (\cite{brockman2016openai}), \textbf{Quake III Arena} (\cite{jaderberg2019human}) y \textbf{Obstacle Tower} (\cite{juliani2019obstacle}) el cual es un nuevo juego en 3D basado en la venganza de Moctezuma (Fig. \ref{fig:tower}), uno de los juegos Atari más difíciles (para la IA), cuyas fases se generan de forma procedural.
 
 
 \begin{figure}[ht!]
@@ -323,7 +310,7 @@ Otro ejemplo similar, \textbf{Obstacle Tower} (\cite{juliani2019obstacle}) es un
 
 \subsection{The Animal-AI Environment}
 
-(\cite{beyret2019animal})
+El entorno Animal-AI es una nueva plataforma de experimentación y evaluación de IA que implementa cognición. Está diseñado para contener sólo los ingredientes necesarios para realizar pruebas cognitivas construidas a partir de la percepción y la navegación. Comenzamos con tareas simples pero cruciales que muchos animales son capaces de resolver. Éstas incluyen la maximización de la recompensa, la física intuitiva, la permanencia de los objetos y el razonamiento causal simple. Al imitar las tareas y los protocolos de la cognición animal, podemos evaluar mejor el progreso de la IA de dominio general. (\cite{beyret2019animal})
 
 \begin{figure}[ht!]
     \centering
@@ -341,8 +328,11 @@ Otro ejemplo similar, \textbf{Obstacle Tower} (\cite{juliani2019obstacle}) es un
     \label{fig:animal}
 \end{figure}
 
+Inspirándoce en la extensa literatura sobre la cognición animal, Animal-IA presenta un entorno que mantiene todos los elementos positivos de los entornos de juego estándar, pero que está diseñado explícitamente para probar la cognición artificial de tipo animal. Los experimentos son comparables entre el entorno de Animal-AI y la literatura sobre cognición animal, ya que imita la forma en que un experimentador construiría un entorno de pruebas para un animal. El entorno posee un API en python para su interacción y utliza Unity ML (\cite{juliani2018unity}) para la simulación de las pruebas.
 
-\section{Project Malmo, un meta-entorno de pruebas en Minecraft}\label{section:state-of-the-art:project-malmO}
+La batería de pruebas de Animal-AI se lanzó como parte de una competición junto con el entorno de Animal- AI. El formato de la competición permite evaluar el rendimiento en tareas totalmente ocultas.
+
+\subsection{Project Malmo, un meta-entorno de pruebas en Minecraft}\label{section:state-of-the-art:evaluation-enviroments-for-generalization-on-rl-algoritms:malmo}
 
 
 \begin{figure}[ht!]
@@ -361,11 +351,13 @@ Otro ejemplo similar, \textbf{Obstacle Tower} (\cite{juliani2019obstacle}) es un
     \label{fig:malmo}
 \end{figure}
 
-Ambito de evaluacion.
+La plataforma Malmo es una sofisticada plataforma de experimentación de IA construida sobre Minecraft, y diseñada para apoyar la investigación fundamental en inteligencia artificial.
 
-Premisas implicitas de conocimiento.
+La plataforma del Proyecto Malmo consiste en un mod para la versión Java, y un código que ayuda a los agentes de inteligencia artificial a percibir y actuar dentro del entorno de Minecraft. Los dos componentes pueden funcionar en Windows, Linux o Mac OS, y los investigadores pueden programar sus agentes en cualquier lenguaje de programación con el que se sientan cómodos.
 
-\subsection{MineRL y la prueba del Diamante}
+Minecraft es ideal para la investigación de la inteligencia artificial por la misma razón por la que resulta adictivo para los millones de aficionados que entran en su mundo virtual cada día. A diferencia de otros juegos de ordenador, Minecraft ofrece a sus usuarios un sinfín de posibilidades, que van desde tareas sencillas, como caminar en busca de un tesoro, hasta otras complejas, como construir una estructura con un grupo de compañeros de equipo.
+
+\subsubsection{MineRL y la prueba del Diamante}
 
 Esta ambiciosa competición está diseñada para impulsar los avances en el aprendizaje de refuerzo con muestras eficientes y con prejuicios humanos. El aprendizaje eficiente por muestreo es un reto clave, ya que los algoritmos actuales suelen requerir millones de muestras para aprender a realizar tareas concretas, lo que limita el alcance y la aplicabilidad de estos enfoques. Esta competición se basa en una tarea compleja, en datos de demostración a gran escala y en una configuración de evaluación que requiere y premia el aprendizaje eficiente de las muestras y la generalización efectiva. (\cite{hofmann2019minecraft})
 
@@ -377,10 +369,6 @@ El concurso está diseñado para estimular los avances del aprendizaje por imita
 Para llegar al tesoro del diamante, los jugadores controlados por la IA, o agentes, en el concurso MineRL tienen que dominar un proceso de varios pasos. Primero, recogen madera y hierro para fabricar picos. Luego construyen antorchas para iluminar el camino. También pueden llevar un cubo de agua para apagar las corrientes de lava subterráneas. Una vez preparado todo eso, una IA puede empezar a explorar pozos mineros y cuevas, así como a hacer túneles bajo tierra para buscar mineral de diamante.
 
 Para crear datos de entrenamiento para la competición, los organizadores de MineRL crearon un servidor público de Minecraft y reclutaron a personas para que completaran retos diseñados para demostrar tareas específicas, como la elaboración de diversas herramientas. Al final, capturaron 60 millones de ejemplos de acciones que podían realizarse en una situación determinada y aproximadamente 1.000 horas de comportamiento grabado para entregar a los equipos. Las grabaciones representan uno de los primeros y mayores conjuntos de datos dedicados específicamente a la investigación del aprendizaje por imitación.
-
-Puntos fuertes y debiles según nuestra definición.
-
-Posibles aplicaciones.
 
 \section{Abstraction and Reasoning Corpus (ARC)}\label{section:state-of-the-art:arc}
 
@@ -418,6 +406,5 @@ ARC comprende un conjunto de entrenamiento y un conjunto de evaluación. El conj
 El ARC sólo evalúa una forma general de inteligencia fluida, centrada en el razonamiento y la abstracción. El ARC no incluye el lenguaje, las imágenes de objetos del mundo real ni el sentido común del mundo real. El ARC busca sólo
 
 En general, ARC tiene buenos aspectos para destacar y cumple con un gran número caracteristicas de un buen evaluador de inteligencia. Aún así su ambito de habilidad se centra en sistemas inteligentes estáticos de entrada-salida, sin oportunidad de interacción con el entorno más allá de los ejemplos. Las tareas se crean manualmente por lo que son fijas, no generativas. También se hace complejo evaluar a los algoritmos de aprendizaje por reforzamiento dado la forma en que está diseñada la prueba. Las tareas de proposito general capturadas en ARC carecen del concepto de tiempo. Las nociones de topología se deben dar de forma implícita. 
-
 
 Es necesario y mas justo replantear las premisas teniendo en cuenta el efecto del tiempo, la persepcion explicita de los cambios topograficos y los efectos acción-reacción. Llevar las tareas a conceptos mas primitivos en terminos de aprendizaje sin descuidar la dificultad de generalizacion.
