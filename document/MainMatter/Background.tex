@@ -2,7 +2,7 @@
 
 \section{Introduccion de RL}\label{section:state-of-the-art:introduction-to-RL}
 
-La idea de aprender interactuando con el entorno es probablemente lo primero que se piensa cuando se habla de la naturaleza del aprendizaje. Cuando un bebé juega, agita los brazos o mira a su alrededor, no tiene un maestro explícito, pero sí una conexión sensoriomotora directa con su entorno. El ejercicio de esta conexión produce una gran cantidad de información sobre la causa y el efecto, sobre las consecuencias de las acciones y sobre lo que hay que hacer para alcanzar los objetivos. A lo largo de su vida, estas interacciones son, sin duda, una importante fuente de conocimiento sobre el entorno y sobre ellos mismos. Tanto si aprenden a conducir un coche como a mantener una conversación, son conscientes de cómo responde el entorno a lo que hacen, y tratan de influir en lo que ocurre a través de su comportamiento. El aprendizaje a partir de la interacción es una idea fundamental que subyace en casi todas las teorías del aprendizaje y la inteligencia y cualquier método que se adapte bien a la resolución de este tipo de problemas lo consideramos un método de aprendizaje por refuerzo.
+La idea de aprender interactuando con el entorno es probablemente lo primero que se piensa cuando se habla de la naturaleza del aprendizaje. Cuando un bebé juega, agita los brazos o mira a su alrededor, no tiene un maestro explícito, pero sí una conexión sensorio motora directa con su entorno. El ejercicio de esta conexión produce una gran cantidad de información sobre la causa y el efecto, sobre las consecuencias de las acciones y sobre lo que hay que hacer para alcanzar los objetivos. A lo largo de su vida, estas interacciones son, sin duda, una importante fuente de conocimiento sobre el entorno y sobre ellos mismos. Tanto si aprenden a conducir un coche como a mantener una conversación, son conscientes de cómo responde el entorno a lo que hacen, y tratan de influir en lo que ocurre a través de su comportamiento. El aprendizaje a partir de la interacción es una idea fundamental que subyace en casi todas las teorías del aprendizaje y la inteligencia y cualquier método que se adapte bien a la resolución de este tipo de problemas lo consideramos un método de aprendizaje por refuerzo.
 
 En inteligencia artificial la tarea básica del aprendizaje por refuerzo consiste en capturar los aspectos más importantes del problema al que se enfrenta un agente que interactúa con su entorno para lograr un objetivo. Está claro que un agente de este tipo debe ser capaz de percibir el estado del entorno hasta cierto punto y debe ser capaz de realizar acciones que afecten al estado. El agente también debe tener uno o varios objetivos relacionados con el estado del entorno. Los problemas de aprendizaje por refuerzo implican aprender qué hacer, o sea cómo asignar situaciones a acciones, para maximizar una señal de recompensa numérica. En esencia, se trata de problemas de bucle cerrado porque las acciones del sistema de aprendizaje influyen en sus entradas posteriores. Además, no se le dice al agente qué acciones debe tomar, como en muchas formas de aprendizaje automático, sino que debe descubrir qué acciones producen la mayor recompensa al probarlas (Fig. \ref{fig:rl-elements}). En los casos más interesantes y desafiantes, las acciones pueden afectar no sólo a la recompensa inmediata, sino también a la siguiente situación y, a través de ella, a todas las recompensas posteriores. (\cite{sutton1998introduction})
 
@@ -15,7 +15,7 @@ En inteligencia artificial la tarea básica del aprendizaje por refuerzo consist
 
 \subsection{Componentes del aprendizaje por refuerzo}
 
-Más allá de los macroconceptos de agente, entorno, observaciones y acciones, se pueden identificar cuatro subelementos principales de un sistema de aprendizaje por refuerzo: la política, la señal de recompensa, la función de valor y, opcionalmente, el modelo del entorno. (\cite{sutton1998introduction})
+Más allá de los macro conceptos de agente, entorno, observaciones y acciones, se pueden identificar cuatro subelementos principales de un sistema de aprendizaje por refuerzo: la política, la señal de recompensa, la función de valor y, opcionalmente, el modelo del entorno. (\cite{sutton1998introduction})
 
 La política define la forma de actuar del agente en un momento dado. A grandes rasgos, una política es un mapeo de los estados percibidos del entorno a las acciones que se deben realizar cuando se encuentran en esos estados. La política es el núcleo de la voluntad de un agente en el sentido de que por sí sola es suficiente para determinar su comportamiento. En general, las políticas pueden ser estocásticas. (\cite{sutton1998introduction})
 
@@ -24,7 +24,6 @@ La señal de recompensa define el objetivo en un problema de aprendizaje por ref
 Las recompensas son en cierto modo primarias, mientras que los valores, como predicciones de las recompensas, son secundarios. Sin recompensas no podría haber valores, y el único propósito de estimar los valores es conseguir más recompensas. Sin embargo, son los valores los que más nos preocupan a la hora de tomar y evaluar decisiones. Las elecciones de acción se hacen en base a juicios de valor. Buscamos acciones que provoquen estados de mayor valor, no de mayor recompensa, porque estas acciones obtienen la mayor cantidad de recompensa para nosotros a largo plazo. En la toma de decisiones y la planificación, la cantidad derivada llamada valor es la que más nos preocupa. Por desgracia, es mucho más difícil determinar los valores que las recompensas. Las recompensas vienen dadas directamente por el entorno, pero los valores deben estimarse a partir de las secuencias de observaciones que realiza un agente a lo largo de su vida. De hecho, el componente más importante de casi todos los algoritmos de aprendizaje por refuerzo que consideramos es un método para estimar eficazmente los valores. (\cite{sutton1998introduction}) (\cite{rao2000reinforcement})
 
 El cuarto y último elemento de algunos sistemas de aprendizaje por refuerzo es un modelo del entorno. Se trata de algo que imita el comportamiento del entorno o, más generalmente, que permite hacer inferencias sobre cómo se comportará el entorno. Por ejemplo, dado un estado y una acción, el modelo puede predecir el siguiente estado y la siguiente recompensa resultantes. (\cite{sutton1998introduction})
-
 
 \subsection{Proceso de Decisión de Markov (MDP)}
 
@@ -56,7 +55,6 @@ Si el agente puede predecir (o simular) la recompensa de una acción antes de ll
     \caption{Relaciones entre el aprendizaje, la planificación y la actuación.}
     \label{fig:rl-strategies}
 \end{figure}
-
 
 Dentro de los algoritmos  \textit{libres de modelo} existe otra caracterización basada en si se construye explícitamente o no la política del agente:
 
@@ -132,7 +130,7 @@ Las medidas de rendimiento que cuantifican la habilidad de un sistema en una tar
 
 Los \textit{Benchmarks}, en particular, han sido un importante motor de progreso en la IA, porque son reproducibles (el conjunto de pruebas es fijo), justos (el conjunto de pruebas es el mismo para todos), escalables (es barato realizar la evaluación muchas veces), fáciles de configurar y lo suficientemente flexibles como para ser aplicables a una amplia gama de tareas posibles. Los puntos de referencia han sido a menudo más impactantes en el contexto de una competición entre diferentes equipos de investigación.
 
-La robustez de los sistemas que se desarrollan, en particular los modelos de Deep Learning, suele ser problemática. Esto se debe en gran parte al hecho de que la mayoría de los benchmarks no prestan mucha atención a la evaluación formal de la robustez y a la cuantificación de la generalización, y por lo tanto pueden ser resueltos a través de atajos que el descenso de gradiente es apto para explotar. La generalización entre tareas sigue siendo difícil para los algoritmos de aprendizaje profundo por refuerzo más avanzados. Aunque los agentes entrenados pueden resolver tareas complejas, les cuesta transferir su experiencia a nuevos entornos. Los agentes que dominan diez niveles de un videojuego suelen fracasar estrepitosamente cuando se enfrentan por primera vez al undécimo. Los humanos pueden generalizar sin problemas en tareas similares, pero esta capacidad está ausente en los agentes de la realidad virtual. En resumen, los agentes se especializan demasiado en los entornos encontrados durante el entrenamiento (\cite{cobbe2019quantifying}). A este fenómeno se le denomina sobre \textit{overfitting}. Se reconoce ampliamente que los agentes de RL son propensos a la sobreadaptación (\cite{zhang2018study}), pero los puntos de referencia de RL más comunes siguen fomentando el entrenamiento y la evaluación en el mismo conjunto de entornos. (\cite{nichol2018gotta}) 
+La robustez de los sistemas que se desarrollan, en particular los modelos de Deep Learning, suele ser problemática. Esto se debe en gran parte al hecho de que la mayoría de los benchmarks no prestan mucha atención a la evaluación formal de la robustez y a la cuantificación de la generalización, y por lo tanto pueden ser resueltos a través de atajos que el descenso de gradiente es apto para explotar. La generalización entre tareas sigue siendo difícil para los algoritmos de aprendizaje profundo por refuerzo más avanzados. Aunque los agentes entrenados pueden resolver tareas complejas, les cuesta transferir su experiencia a nuevos entornos. Los agentes que dominan diez niveles de un videojuego suelen fracasar estrepitosamente cuando se enfrentan por primera vez al undécimo. Los humanos pueden generalizar sin problemas en tareas similares, pero esta capacidad está ausente en los agentes de la realidad virtual. En resumen, los agentes se especializan demasiado en los entornos encontrados durante el entrenamiento (\cite{cobbe2019quantifying}). A este fenómeno se le denomina sobre \textit{overfitting}. Se reconoce ampliamente que los agentes de RL son propensos a la sobre adaptación (\cite{zhang2018study}), pero los puntos de referencia de RL más comunes siguen fomentando el entrenamiento y la evaluación en el mismo conjunto de entornos. (\cite{nichol2018gotta}) 
 
 \section{Una buena evaluación de Inteligencia}\label{section:state-of-the-art:a-good-measure-of-inteligence}
 
@@ -176,8 +174,7 @@ El Conocimiento Básico identifica cuatro amplias categorías de supuestos innat
 \item Geometría y topología elementales: este sistema de conocimiento básico recoge las nociones de distancia, orientación y relaciones de entrada y salida de los objetos de nuestro entorno y de nosotros mismos. Es la base de la facilidad innata de los seres humanos para orientarse con respecto a su entorno y navegar por entornos 2D y 3D.
 \end{itemize}
 
-
-\subsection{Caracteristicas de una buena evaluación de inteligencia en esta perspectiva}
+\subsection{Características de una buena evaluación de inteligencia en esta perspectiva}
 
 Para lograr un proceso de evaluación justo es necesario definir, tomando lo planteado en las secciones anteriores, las características que cumpla todo entorno de evaluación de inteligencia con capacidades de generalización extremas:
 
@@ -228,13 +225,12 @@ Un grupo de expertos en inteligencia artificial se reunieron para discutir cómo
 
     \item El esquema de Winograd: Una prueba basada en el lenguaje que requiere algo como el sentido común de los humanos. Fue propuesto por el científico computacional Hector Levesque en 2011. Los esquemas de Winograd les dan una frase a los participantes, luego formulan una simple pregunta sobre esa frase. Son preguntas muy fáciles para los humanos, pero requieren una comprensión del lenguaje relativamente profunda. Descritas como frases que no puedes entender a menos que entiendas el mundo.
     
-    \item Una tercera prueba fue sugerida por Gary Marcus, un profesor de psicología en NYU, propuso pedirle a un computador que viera un video que no haya visto antes y hacerle preguntas sobre él. Preguntas al estilo: ¿Por qué Rusia invadió Crimea? o ¿Por qué Walter White quiso matar a Jessie?. Es decir, crear un evento donde una máquina pueda responder "preguntas periodísticas" sobre imágenes, video y audio.
+    \item Una tercera prueba fue sugerida por Gary Marcus, un profesor de psicología en NYU, propuso pedirle a un computador que viera un video que no haya visto antes y hacerle preguntas sobre él. Preguntas al estilo: ¿Por qué Rusia invadió Crimea? o ¿Por qué Walter White quiso matar a Jessie? Es decir, crear un evento donde una máquina pueda responder "preguntas periodísticas" sobre imágenes, video y audio.
 
     \item Otras ideas que salieron del encuentro fue desafiar a una AI a jugar un nuevo videojuego como si fuera un niño de 12 años, o decirle a un profesor digital que aprenda un nuevo tópico y lo enseñe igual (o mejor) que un humano.
 \end{itemize}
 
-
-\section{Entornos de evaluacion de la capacidad de generalizacion en algoritmos RL}\label{section:state-of-the-art:evaluation-enviroments-for-generalization-on-rl-algoritms}
+\section{Entornos de evaluación de la capacidad de generalización en algoritmos RL}\label{section:state-of-the-art:evaluation-enviroments-for-generalization-on-rl-algoritms}
 
 \subsection{The Arcade Learning Environment}\label{section:state-of-the-art:evaluation-enviroments-for-generalization-on-rl-algoritms:ALE}
 
@@ -284,7 +280,6 @@ Para facilitar la ejecución Procgen presenta un espacio fijo de observaciones y
 
 Entre los de entornos similares se encuentran \textbf{OpenIA Gym} (\cite{brockman2016openai}), \textbf{Quake III Arena} (\cite{jaderberg2019human}) y \textbf{Obstacle Tower} (\cite{juliani2019obstacle}) el cual es un nuevo juego en 3D basado en la venganza de Moctezuma (Fig. \ref{fig:tower}), uno de los juegos Atari más difíciles (para la IA), cuyas fases se generan de forma procedural.
 
-
 \begin{figure}[ht!]
     \centering
     \begin{subfigure}
@@ -333,7 +328,6 @@ Inspirándose en la extensa literatura sobre la cognición animal, Animal-IA pre
 La batería de pruebas de Animal-AI se lanzó como parte de una competición junto con el entorno de Animal- AI. El formato de la competición permite evaluar el rendimiento en tareas totalmente ocultas.
 
 \subsection{Project Malmo, un meta-entorno de pruebas en Minecraft}\label{section:state-of-the-art:evaluation-enviroments-for-generalization-on-rl-algoritms:malmo}
-
 
 \begin{figure}[ht!]
     \centering
@@ -386,7 +380,6 @@ Para crear datos de entrenamiento para la competición, los organizadores de Min
     \label{fig:arc-2}
 \end{figure}
 
-
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=0.7\textwidth]{Graphics/arc-3.png}
@@ -394,18 +387,18 @@ Para crear datos de entrenamiento para la competición, los organizadores de Min
     \label{fig:arc-3}
 \end{figure}
 
+El ARC puede considerarse como una referencia de inteligencia artificial general, como una referencia de síntesis de programas o como una prueba de inteligencia psicométrica. Está dirigido tanto a los humanos como a los sistemas de inteligencia artificial que pretenden emular una forma de inteligencia fluida general similar a la humana al mantenerse cerca del formato de los test psicométricos de inteligencia. 
 
-El ARC puede considerarse como una referencia de inteligencia artificial general, como una referencia de síntesis de programas o como una prueba de inteligencia psicométrica. Está dirigido tanto a los humanos como a los sistemas de inteligencia artificial que pretenden emular una forma de inteligencia fluida general similar a la humana al mantenerse cerca del formato de los tests psicométricos de inteligencia. 
+Se centra en la medición de la generalización consciente del desarrollador, en lugar de la agilidad específica para la tarea, presentando únicamente tareas novedosas en el conjunto de evaluación. Las tareas presentadas son abstractas y deben ser comprendidas por el examinador con pocos ejemplos. En ARC se controla cuantitativamente la experiencia proporcionando sólo una cantidad fija de datos de entrenamiento para cada tarea y presentando sólo las tareas que no se prestan a la generación artificial de nuevos datos, obligando así a la eficiencia de los algoritmos a captar la esencia de la habilidad que se requiere.
 
-Se centra en la medición de la generalización consciente del desarrollador, en lugar de la agilidad específica para la tarea, presentando únicamente tareas novedosas en el conjunto de evaluación. Las tareas presentadas son abstractas y deben ser comprendidas por el examinador con pocos ejemplos. En ARC se controla cuantitativamente la experiencia proporcionando sólo una cantidad fija de datos de entrenamiento para cada tarea y presentando sólo las tareas que no se prestan a la generación artificial de nuevos datos, obligando asi a la eficiencia de los algoritmos a captar la escencia de la habilidad que se requiere.
-
-Enumera explícitamente el conjunto completo de preconceptos como se propone en (\ref{section:state-of-the-art:a-good-measure-of-inteligence}), y permite una comparación de inteligencia general justa entre humanos y máquinas al requerir únicamente preconceptos cercanos al conocimiento previo humano innato. Tales como contar, nociones topográficas para la forma, tamaño, posicion y color; nociones de la interacción entre objetos entre otras.
+Enumera explícitamente el conjunto completo de preconceptos como se propone en (\ref{section:state-of-the-art:a-good-measure-of-inteligence}), y permite una comparación de inteligencia general justa entre humanos y máquinas al requerir únicamente preconceptos cercanos al conocimiento previo humano innato. Tales como contar, nociones topográficas para la forma, tamaño, posición y color; nociones de la interacción entre objetos entre otras.
 
 ARC comprende un conjunto de entrenamiento y un conjunto de evaluación. El conjunto de entrenamiento incluye 400 tareas, mientras que el conjunto de evaluación incluye 600 tareas. El conjunto de evaluación se divide a su vez en un conjunto de evaluación público (400 tareas) y un conjunto de evaluación privado (200 tareas). Cada tarea consta de un pequeño número de ejemplos de demostración (3,3 de media), y un pequeño número de ejemplos de prueba (generalmente 1, aunque puede ser 2 o 3 en casos raros). Cada ejemplo consta de una cuadrícula de entrada y una cuadrícula de salida. Cada cuadrícula es una cuadrícula literal de símbolos (cada símbolo se visualiza normalmente a través de un color único), como se ve en la figura \ref{fig:arc-2}. Hay 10 símbolos (o colores) únicos. Una cuadrícula puede tener cualquier altura o anchura entre 1x1 y 30x30, ambos inclusive (la altura media es 9 y la anchura media es 10).
 
 El ARC sólo evalúa una forma general de inteligencia fluida, centrada en el razonamiento y la abstracción. El ARC no incluye el lenguaje, las imágenes de objetos del mundo real ni el sentido común del mundo real. El ARC busca sólo
 
-En general, ARC tiene buenos aspectos para destacar y cumple con un gran número caracteristicas de un buen evaluador de inteligencia. Aún así su ambito de habilidad se centra en sistemas inteligentes estáticos de entrada-salida, sin oportunidad de interacción con el entorno más allá de los ejemplos. Las tareas se crean manualmente por lo que son fijas, no generativas. También se hace complejo evaluar a los algoritmos de aprendizaje por reforzamiento dado la forma en que está diseñada la prueba. Las tareas de propósito general capturadas en ARC carecen del concepto de tiempo. Las nociones de topología se deben dar de forma implícita. 
+En general, ARC tiene buenos aspectos para destacar y cumple con un gran número características de un buen evaluador de inteligencia. Aún así su ámbito de habilidad se centra en sistemas inteligentes estáticos de entrada-salida, sin oportunidad de interacción con el entorno más allá de los ejemplos. Las tareas se crean manualmente por lo que son fijas, no generativas. También se hace complejo evaluar a los algoritmos de aprendizaje por reforzamiento dado la forma en que está diseñada la prueba. Las tareas de propósito general capturadas en ARC carecen del concepto de tiempo. Las nociones de topología se deben dar de forma implícita. 
 
-Es necesario y mas justo replantear las premisas teniendo en cuenta el efecto del tiempo, la persepcion explicita de los cambios topograficos y los efectos acción-reacción. Llevar las tareas a conceptos mas primitivos en terminos de aprendizaje sin descuidar la dificultad de generalizacion.
+Es necesario y mas justo replantear las premisas teniendo en cuenta el efecto del tiempo, la percepción explicita de los cambios topográficos y los efectos acción-reacción. Llevar las tareas a conceptos mas primitivos en términos de aprendizaje sin descuidar la dificultad de generalización.
+
 
