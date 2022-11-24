@@ -1,6 +1,6 @@
 \chapter{Propuesta}\label{chapter:proposal}
 
-UTHOPIA propone un modelo de evaluación que sirve para comparar la inteligencia de humanos con la inteligencia de agentes de aprendizaje por refuerzo utilizando como base las premisas planteadas por (\cite{chollet2019measure}) en el ARC. Brinda una interfaz para crear juegos que se centren en diferentes tareas que requieran habilidades carácter cognitivo, cada una de las cuales pone a prueba un aspecto diferente del razonamiento. Aunque los supuestos prejuicios que planteamos son sencillos, al combinarlos podemos crear muchos problemas complejos que requieren la expresión de razonamiento cognitivo similar al humano.
+UTHOPIA propone un modelo de evaluación que sirve para comparar la inteligencia de humanos y la inteligencia de agentes de aprendizaje por refuerzo utilizando como base las premisas planteadas por Chollet en (\cite{chollet2019measure}) y adicionalmente las conclusiones de los otros trabajos en entornos de evaluación de algoritmos de aprendizaje por reforzamiento. Brinda una interfaz para crear juegos que se centren en diferentes tareas que requieran habilidades de carácter cognitivo, cada una de las cuales pone a prueba un aspecto diferente del razonamiento. Aunque los supuestos prejuicios que planteamos son sencillos, al combinarlos podemos crear muchos problemas complejos que requieren la expresión de razonamiento cognitivo similar al humano.
 
 Las carácteristicas que se buscaron al construir UTHOPIA fueron:
 
@@ -45,13 +45,46 @@ Como se ha sugerido en (\ref{section:state-of-the-art:a-good-measure-of-intelige
 
 \subsection{Características de los juegos}
 
-Los juegos de UTHOPIA son simples. El objetivo de cada uno es capturar elementos del razonamiento cognitivo. Se intenta retirar todos los factores distractores que no tengan peso en el significado abstracto de la tarea evaluada. Cada juego esta formado por objetos de color entero y con formas simples. Su interacciones ocurre mediante el contacto entre ellos. No es necesario jugar de forma optima para la terminar los juegos correctamente, y en su mayoria la dificultad es ajustable además que se ha intentado que todos los juegos tengan solución en cada episodio. 
+Los juegos de UTHOPIA son simples. El objetivo de cada uno es capturar elementos del razonamiento cognitivo. Se intenta retirar todos los factores distractores que no tengan peso en el significado abstracto de la tarea evaluada. Cada juego esta formado por objetos de color entero y con formas simples. Su interacciones ocurre mediante el contacto entre ellos. No es necesario jugar de forma optima para terminar los juegos correctamente, y en su mayoria la dificultad es ajustable. Se ha intentado, además, que todos los juegos tengan solución en cada episodio. 
 
-Para brindar experiencias que no lleven a los agentes a sobre ajustarse se ejecuta en cada episodio de juego, la regeneracion del estado inicial de forma procedural.
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}
+      \centering
+      \includegraphics[width=0.4\textwidth]{Graphics/uthopia_count_war_1.png}
+      \label{fig:uthopia1}
+    \end{subfigure}%
+    \begin{subfigure}
+      \centering
+      \includegraphics[width=0.4\textwidth]{Graphics/uthopia_evade_1.png}
+      \label{fig:uthopia2}
+    \end{subfigure}%
+    \caption{Algunos juegos de UTHOPIA. A la izquierda elegir el bando con mayor numero y a la derecha tocar el objetivo evadiendo obstaculos.}
+    \label{fig:uthopia}
+\end{figure}
+
+Para brindar experiencias que no lleven a los agentes a sobre ajustarse se ejecuta, en cada episodio de juego, la regeneracion del estado inicial de forma procedural. [TODO]
+
+\begin{figure}[ht!]
+    \centering
+    \begin{subfigure}
+      \centering
+      \includegraphics[width=0.4\textwidth]{Graphics/uthopia_street_1.png}
+      \label{fig:uthopia_street_1}
+    \end{subfigure}%
+    \begin{subfigure}
+      \centering
+      \includegraphics[width=0.4\textwidth]{Graphics/uthopia_street_2.png}
+      \label{fig:uthopia_street_2}
+    \end{subfigure}%
+    \caption{Juego de cruzar. A la izquierda antes de alcanzar el primer objetivo y a la derecha luego de tocarlo}
+    \label{fig:uthopia_street}
+\end{figure}
 
 \subsection{Configuración del aprendizaje por refuerzo}
 
-Desde la perspectiva del aprendizaje por refuerzo, para un solo agente, definimos las observaciones, las acciones y las recompensas de la siguiente manera (véase el material complementario para más detalles):
+Desde la perspectiva del aprendizaje por refuerzo, para un solo agente, definimos las observaciones, las acciones y las recompensas de la siguiente manera:
 
 \begin{itemize}
     \item Observaciones: Una única cámara que muestra una cuadrícula de píxeles con resolución $K * K * 3$ donde $32 \eqslantless K \eqslantless 256$.
@@ -62,20 +95,8 @@ Desde la perspectiva del aprendizaje por refuerzo, para un solo agente, definimo
 
 \subsection{El flujo de evaluación para agentes inteligentes en UTHOPIA}
 
-La evaluación de los agentes se produce en dos etapas: Preparación y Evaluación.
+El primer paso en el proceso de evaluación consiste en seleccionar uno de los juegos de la base de juegos creados, de esos un conjunto son publicos y el resto se reserva para la evaluación privada de aquellos que apliquen intentando evaluar la generalizacion consciente del desarrollador (\ref{section:state-of-the-art:generalization-on-machine-learning:type-of-generalizations}). El orden de selección se hace en base al estimado de dificultad de generalización que presenta cada uno, tratando de aumentar la dificultad de forma gradual. La selección concreta del orden puede afectar, positiva o negativamente, el resultados de las evaluaciones progresivas debido al conocimiento almacenado recibido en las subtareas.
 
-Durante la \textbf{Etapa de Preparación} UTHOPIA selecciona un juego al azar y crea continuamente instancias de este para que el agente se familiarice y capte la esencia detras de la tarea cognitiva. Se expone al juego durante un tiempo determinado relativamente corto (comparado al entrenamiento habitual de los algoritmos de aprendizaje por reforzamiento) algo mayor al que un humano promedio necesitaria para entender la tarea en cuestion para forzarlo a ser eficiente. 
+Una vez se seleccionado el juego comienza el primer episodio de la \textit{Fase de Preparación}. Durante la esta etapa, UTHOPIA crea continuamente instancias del juego para que el agente se familiarice y capte la esencia detras de la tarea cognitiva que la resuelve. Se expone a episodios del juego durante un tiempo determinado relativamente corto (comparado al entrenamiento habitual que reciben los algoritmos de aprendizaje por reforzamiento) algo mayor al que un humano promedio necesitaria para entender la tarea.
 
-Luego de esto se procede a la \textbf{Etapa de Prueba} donde se crean nuevas instancias del juego seleccionado pero, esta vez, evaluando la solución efectiva del mismo. La conclución de la evaluación es binaria basandose en la solucion o no del juego en un numero suficiente de intentos.
-
-Una Preparar al agente solo con un Juego especifico, y apartir de ahi controlar explicitamente el orden de los juegos a los que lo someteremos, segun las premisas que se utilizan, y midiendo su capacidad de resolverlos partiendo de la dificultad de generalizacion del juego inicial. Esto nos permitiría medir su capacidad de generalización de forma mas precisa.
-
-La idea es:
-
-1. Uthopia selecciona un juego de la base de juegos
-2. Comienza la fase de Preparación
-3. Dinamica de Generar instancia  de Juego < - > Realizar la simulacion
-4. Pasado un tiempo t, se comienza la fase de Prueba
-5. Lo mismo que en 3. Pero al terminar el episodio se revisan los resultados.
-6. Luego de X intentos, suficientes, se retornan los resultados a Uthopia para anializar. 
-7. Si así se decide (pasa la prueba), comienza el paso 1 otra vez.
+Pasada la fase de preparación se procede a la \textit{Etapa de Prueba} donde se crean nuevas instancias del mismo juego seleccionado utilizando otras semillas para la generación. Esta vez se evalua la solución las tareas. El resultado cada episodio es binario, y los agentes se consideran aprobados si resuelven correctamnte la tarea en un numero suficiente de intentos.

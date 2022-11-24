@@ -71,7 +71,26 @@
 \setcounter{totalnumber}{4}
 \renewcommand{\textfraction}{0.07}
 
+
+\usepackage{hyperref}
+
 % Whole biblatex hyperref to bibliography
+\hypersetup{
+  colorlinks=true,
+  citecolor={orange},
+  citebordercolor={orange},
+}
+
+%This part is to colorize the brackets%
+\DeclareCiteCommand{\cite}[\color{orange}\mkbibbrackets]
+  {\usebibmacro{cite:init}%
+   \usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite:comp}}
+  {}
+  {\usebibmacro{cite:dump}%
+   \usebibmacro{postnote}}
+
 \DeclareCiteCommand{\cite}
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
