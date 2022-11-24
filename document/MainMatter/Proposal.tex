@@ -1,28 +1,21 @@
 \chapter{Propuesta}\label{chapter:proposal}
 
-[OUTLINE] Estos motivos fueron la inspiración para crear el \textit{Universal test for humans oposing inteligen agents (UTHOPIA)}.
+UTHOPIA propone un modelo de evaluación que sirve para comparar la inteligencia de humanos con la inteligencia de agentes de aprendizaje por refuerzo utilizando como base las premisas planteadas por (\cite{chollet2019measure}) en el ARC. Brinda una interfaz para crear juegos que se centren en diferentes tareas que requieran habilidades carácter cognitivo, cada una de las cuales pone a prueba un aspecto diferente del razonamiento. Aunque los supuestos prejuicios que planteamos son sencillos, al combinarlos podemos crear muchos problemas complejos que requieren la expresión de razonamiento cognitivo similar al humano.
 
-UTHOPIA pretende crear un modelo de evaluación que sirva para comparar la inteligencia de humanos con la inteligencia de agentes de aprendizaje por refuerzo. UTHOPIA puede verse como una serie de juegos que se centran en diferentes tareas cognitivas, cada una de las cuales pone a prueba un aspecto diferente del razonamiento. Aunque los supuestos que planteamos son sencillos, al combinarlos podemos crear muchos problemas complejos que requieren la expresión de razonamiento cognitivo similar al humano.
-
-La estructura de los juegos de UTHOPIA se compone por una pantalla que muestra el estado del juego, y un control con cuatro acciones que semanticamente indican dirección y una acción extra.
-
-Las directrices a las que se ajusta UTHOPIA son:
+Las carácteristicas que se buscaron al construir UTHOPIA fueron:
 
 \begin{itemize}
-    \item Integrar evaluaciones tanto para humanos como para algoritmos de aprendizaje por reforzamiento.
-    \item Centrarse en la medición de la generalización consciente del desarrollador, en lugar de la habilidad específica, presentando únicamente tareas novedosas que se supone son desconocidas para el desarrollador que realiza la prueba.
-    \item Centrarse en la medición de una forma de generalización cualitativamente amplia, presentando tareas abstractas que deben ser comprendidas por el examinador con pocos ejemplos o tiempo para probar.
-    \item Describir explícitamente el conjunto completo de preconceptos que asume y permitir una comparación de inteligencia general justa entre humanos y máquinas al requerir únicamente preconceptos cercanos al conocimiento previo humano innato.
+    \item Integrar evaluaciones tanto para humanos como para agentes con algoritmos de aprendizaje por reforzamiento.
+    \item Centrarse en la medición de la generalización consciente del desarrollador (\ref{section:state-of-the-art:generalization-on-machine-learning}) en lugar de la habilidad específica, presentando únicamente tareas novedosas que se supone son desconocidas para el desarrollador del sistema.
+    \item Medir de forma cualitativamente amplia la generalización, presentando tareas abstractas que deben ser comprendidas por el examinado con pocos ejemplos o tiempo para probar.
+    \item Describir explícitamente el conjunto completo de prejuicios con los que cuenta y permitir una comparación de inteligencia general justa entre humanos y máquinas al requerir únicamente prejuicios cercanos al conocimiento previo humano innato.
 \end{itemize}
 
-\section{Premisas de conocimiento} 
+\section{Prejuicios del conocimiento} 
 
-Cualquier prueba de inteligencia va a implicar conocimientos previos. ARC trata de controlar sus propias suposiciones enumerando explícitamente el conocimiento previo que asume y evitando depender de cualquier información que no sea parte de este conocimiento previo (por ejemplo, el conocimiento adquirido como el lenguaje). Esto permite que el programa sea lo más cercano posible a los conocimientos previos del núcleo, proporcionando un terreno justo para comparar la inteligencia artificial y la inteligencia humana, como recomendamos en [ref2]
-
-[OUTLINE] Trataremos de controlar los conocimientos previos que asumimos poseen los agentes.
+Cualquier prueba de inteligencia va a implicar conocimientos previos. ARC trata de controlar sus propias suposiciones enumerando explícitamente el conocimiento previo que asume y evitando depender de cualquier información que no sea parte de este conocimiento previo (por ejemplo, el conocimiento adquirido como el lenguaje). Esto permite que el programa sea lo más cercano posible a los conocimientos previos innatos humanos, proporcionando un terreno justo para comparar la inteligencia artificial y la inteligencia humana, como recomendamos en (\ref{section:state-of-the-art:a-good-measure-of-inteligence:human-prios})
 
 \textbf{Premisas de objetividad}
-Premisas basicas sobre las entidades del entorno:
 \begin{itemize}
 \item Cohesión y delimitación de objetos: Definir las áreas que representan un objeto.
 \item Persistencia de los objetos: Los objetos tienden a persistir en el juego al menos que se realice algun tipo de interacción explícita.
@@ -36,10 +29,9 @@ Premisas basicas sobre las entidades del entorno:
 \end{itemize}
 
 \textbf{Conocimientos básicas de geometría y topología}
-Premisas basadas en la forma y color de los objetos:
 \begin{itemize}
 \item Puntos, lineas y formas.
-\item Similaridad: Existen objetos que por su color y forma se asocian al mismo tipo de función dentro de la tarea.
+\item Similaridad entre objetos que por su color y forma se asocian al mismo tipo de función.
 \item Simetrías, rotaciones y traslaciones.
 \item Aumento o disminución de la forma, distorsiones de escala.
 \item Contener, ser contenido y estar dentro o fuera de un perímetro.
@@ -47,15 +39,43 @@ Premisas basadas en la forma y color de los objetos:
 \item Superposición de objetos.
 \end{itemize}
 
-[OUTLINE] Generación y variación procedural de tareas.
+Como se ha sugerido en (\ref{section:state-of-the-art:a-good-measure-of-inteligence:human-prios}), no se incluye señales o simbolos cuya interpretación requiera conocimientos adquiridos tales como el lenguaje, numeros, señalamientos entre otros. 
 
-[OUTLINE] No inclución de premisas que requieran de conocimientos previos como lenguaje o simbolos.
+\section{Estructura de UTHOPIA}
 
-\section{El flujo de evaluación para agentes inteligentes en UTHOPIA}
+\subsection{Características de los juegos}
 
-La evaluación de los agentes inteligentes se produce en dos etapas: Preparación y Evaluación.
+Los juegos de UTHOPIA son simples. El objetivo de cada uno es capturar elementos del razonamiento cognitivo. Se intenta retirar todos los factores distractores que no tengan peso en el significado abstracto de la tarea evaluada. Cada juego esta formado por objetos de color entero y con formas simples. Su interacciones ocurre mediante el contacto entre ellos. No es necesario jugar de forma optima para la terminar los juegos correctamente, y en su mayoria la dificultad es ajustable además que se ha intentado que todos los juegos tengan solución en cada episodio. 
 
-Durante la \textbf{Etapa de Preparación} UTHOPIA selecciona un juego al azar y crea continuamente instancias de este para que el agente se familiarice y capte la esencia detras de la tarea cognitiva. Se expone al juego durante un tiempo determinado relativamente corto (comparado al entrenamiento habitual de los algoritmos de aprendizaje por reforzamiento) algo mayor al que un humano promedio necesitaria para entender la tarea en cuestion para forzarlo a ser eficiente. Luego de esto se procede a la \textbf{Etapa de Prueba} donde se crean nuevas instancias del juego seleccionado pero, esta vez, evaluando la solución efectiva del mismo. La conclución de la evaluación es binaria basandose en la solucion o no del juego en un numero suficiente de intentos.
+Para brindar experiencias que no lleven a los agentes a sobre ajustarse se ejecuta en cada episodio de juego, la regeneracion del estado inicial de forma procedural.
 
-[IDEA] Preparar al agente solo con un Juego especifico, y apartir de ahi controlar explicitamente el orden de los juegos a los que lo someteremos, segun las premisas que se utilizan, y midiendo su capacidad de resolverlos partiendo de la dificultad de generalizacion del juego inicial. Esto nos permitiría medir su capacidad de generalización de forma mas precisa.
+\subsection{Configuración del aprendizaje por refuerzo}
 
+Desde la perspectiva del aprendizaje por refuerzo, para un solo agente, definimos las observaciones, las acciones y las recompensas de la siguiente manera (véase el material complementario para más detalles):
+
+\begin{itemize}
+    \item Observaciones: Una única cámara que muestra una cuadrícula de píxeles con resolución $K * K * 3$ donde $32 \eqslantless K \eqslantless 256$.
+    \item Espacio de acción: El agente puede tomar hasta $8$ acciones, de ellas las primeras $4$ indican dirección de forma semantica, cuyo efecto concreto dentro del juego puede variar según se diseñe. Tanto las acciones de dirección como las restantes pueden ser o no válidas para todos los juegos, por eso en cada uno se especificará explicitamente las acciones aceptadas.
+    \item Señal de Recompensa: Cada juego tiene una evaluación binaria. Las recomenzas están dadas por la terminación correcta o incorrecta de los mismos. Cada juego tiene asociado una cantidad maxima de tiempo de juego, luego de este el juego termina fallido.
+\end{itemize} 
+
+
+\subsection{El flujo de evaluación para agentes inteligentes en UTHOPIA}
+
+La evaluación de los agentes se produce en dos etapas: Preparación y Evaluación.
+
+Durante la \textbf{Etapa de Preparación} UTHOPIA selecciona un juego al azar y crea continuamente instancias de este para que el agente se familiarice y capte la esencia detras de la tarea cognitiva. Se expone al juego durante un tiempo determinado relativamente corto (comparado al entrenamiento habitual de los algoritmos de aprendizaje por reforzamiento) algo mayor al que un humano promedio necesitaria para entender la tarea en cuestion para forzarlo a ser eficiente. 
+
+Luego de esto se procede a la \textbf{Etapa de Prueba} donde se crean nuevas instancias del juego seleccionado pero, esta vez, evaluando la solución efectiva del mismo. La conclución de la evaluación es binaria basandose en la solucion o no del juego en un numero suficiente de intentos.
+
+Una Preparar al agente solo con un Juego especifico, y apartir de ahi controlar explicitamente el orden de los juegos a los que lo someteremos, segun las premisas que se utilizan, y midiendo su capacidad de resolverlos partiendo de la dificultad de generalizacion del juego inicial. Esto nos permitiría medir su capacidad de generalización de forma mas precisa.
+
+La idea es:
+
+1. Uthopia selecciona un juego de la base de juegos
+2. Comienza la fase de Preparación
+3. Dinamica de Generar instancia  de Juego < - > Realizar la simulacion
+4. Pasado un tiempo t, se comienza la fase de Prueba
+5. Lo mismo que en 3. Pero al terminar el episodio se revisan los resultados.
+6. Luego de X intentos, suficientes, se retornan los resultados a Uthopia para anializar. 
+7. Si así se decide (pasa la prueba), comienza el paso 1 otra vez.
