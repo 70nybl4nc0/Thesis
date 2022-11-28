@@ -4,7 +4,7 @@
  
 \subsection{The Unity Engine}
  
-Unity es una plataforma de desarrollo 3D en tiempo real que consta de un motor de renderizado y de física, así como de una interfaz gráfica de usuario llamada Unity Editor. Unity ha recibido una amplia adopción en los sectores del juego, la arquitectura, la ingeniería y la construcción, el automóvil y el cine, y es utilizado por una gran comunidad de desarrolladores de juegos para realizar una gran variedad de simulaciones interactivas, que van desde pequeños juegos para móviles y navegadores hasta juegos de consola de alto presupuesto y experiencias de RA/VR.
+Unity es una plataforma de desarrollo 3D en tiempo real que consta de un motor de renderizado y de física, así como de una interfaz gráfica de usuario llamada Unity Editor. Unity ha recibido una amplia adopción en los sectores del juego, la arquitectura, la ingeniería y la construcción, el automóvil y el cine, y es utilizado por una gran comunidad de desarrolladores de juegos para realizar una gran variedad de simulaciones interactivas, que van desde pequeños juegos para móviles y navegadores hasta juegos de consola de alto presupuesto y experiencias de de realidad virtual.
  
 \subsection{Tensorflow}
  
@@ -18,17 +18,17 @@ PyTorch es un framework de aprendizaje automático de código abierto basado en 
  
 El Unity Machine Learning Agents Toolkit (ML-Agents) es un proyecto de código abierto que permite que los juegos y las simulaciones sirvan como entornos para el entrenamiento de agentes inteligentes. Proporciona implementaciones (basadas en TensorFlow y PyTorch) de algoritmos de última generación para permitir a los desarrolladores de juegos y aficionados entrenar fácilmente agentes inteligentes para juegos 2D, 3D y VR/AR. Los investigadores también pueden utilizar la API de Python, que es muy fácil de usar, para entrenar a los agentes mediante el aprendizaje por refuerzo, el aprendizaje por imitación, la neuroevolución o cualquier otro método. Estos agentes entrenados pueden ser utilizados para múltiples propósitos, incluyendo el control del comportamiento de los NPCs (en una variedad de escenarios tales como multi-agentes y adversarios), pruebas automatizadas de construcciones de juegos y evaluación de diferentes decisiones de diseño de juegos antes de su lanzamiento. El ML-Agents Toolkit es mutuamente beneficioso tanto para los desarrolladores de juegos como para los investigadores de IA, ya que proporciona una plataforma central en la que los avances en IA pueden ser evaluados en los ricos entornos de Unity y luego se hacen accesibles a las comunidades más amplias de investigadores y desarrolladores de juegos. 
  
-Las características del kit de herramientas incluyen un conjunto de entornos de ejemplo, algoritmos RL de última generación Soft Actor-Critic (SAC) (\cite{haarnoja2018soft}) y Proximal Policy Optimization (PPO) (\cite{schulman2017proximal})  entre otros muchos tipos de algoritmos.
+Las características del kit de herramientas incluyen un conjunto de entornos de ejemplo, algoritmos RL de última generación como Soft Actor-Critic (SAC) (\cite{haarnoja2018soft}) y Proximal Policy Optimization (PPO) (\cite{schulman2017proximal})  entre otros.
  
 \section{Implementación de UTHOPIA}
  
-Unity ML expone un API para comunicar Unity a la biblioteca de Python donde realmente están los algoritmos. Unity funciona como un simulador que brinda información visual, física entre otras. Esto permite concentrarse en desarrollar la parte referida a los juegos, cómo se perciben y cómo se controlan por un lado, y probar algoritmos o hacer un uso personalizado de forma separada.
+Unity ML expone un API para comunicar Unity a la biblioteca de Python donde realmente están los algoritmos. Unity funciona como un simulador que brinda las observaciones visuales, físicas entre otras. Esto permite concentrarse en desarrollar la parte referida a los juegos, cómo se perciben y cómo se controlan por un lado, y probar algoritmos o hacer un uso personalizado de la biblioteca de ml-agents de forma separada.
  
 \subsection{Interfaz entre UTHOPIA y Unity ML}
  
-Para implementar el agente del Toolkit se debe heredar de la clase Agente e implementar sus métodos. En Uthopia se ha utilizado esta clase para construir, utilizando el patrón singleton, un controlador que normalice los datos recibidos desde la Política del agente transformando las entradas en una clase conocida con la que es fácil trabajar y comunicando los eventos importantes de los juegos, como las victorias o las derrotas. De esta forma se obliga a la creación de juegos posterior a no cambiar las configuraciones de recompensas o flujos de los juegos.
+Para comenzar la implementación lo primero se hizo fue heredar de la clase \lstinline{UnityML.Agente} y sobrescribir sus métodos. En Uthopia se ha utilizado esta clase para construir el \lstinline{AgentManager}, un controlador que normaliza tanto observaciones como acciones para que sea fácil de trabajar a la hora de crear los juegos y menos propenso a errores. De esta forma se puede transformar la entrada en una clase conocida \lstinline{Uthopia.InputData} y se limita el acceso al sistema de recompensas restringiendo a su uso a los estados terminales de los juegos: las victorias o las derrotas. 
  
-\begin{lstlisting}[caption={Implementación de la clase AgentManager la cual conecta a los agentes de Unity ML Toolkit con los juegos de UTHOPIA}]
+\begin{lstlisting}[caption={Implementación de la clase \lstinline{AgentManager} la cual conecta a los agentes de Unity ML Toolkit con los juegos de UTHOPIA}]
     public class AgentManager: Agent
     {
         public override void Initialize()
@@ -64,7 +64,7 @@ Para implementar el agente del Toolkit se debe heredar de la clase Agente e impl
 
 \subsection{Implementación de Juegos}
  
-La clase Game creada permite crear juegos a partir de la implementación de sus métodos. El ciclo de vida de un juego comienza en Initialize, luego en cada inicio de episodio se invoca a OnEpisodeBegin, y durante el episodio, cada vez que se reciben las acciones, se llama a OnInputReceived. El juego termina si se llama Win o Lose, en cuyo caso UTHOPIA llamará desde OnEpisodeBegin otra vez, o terminará con la fase que procede.
+La clase \lstinline{Game} creada permite crear juegos a partir de la implementación de sus métodos. El ciclo de vida de un juego comienza en \lstinline{Initialize}, luego en cada inicio de episodio se invoca a \lstinline{OnEpisodeBegin}, y durante el episodio, cada vez que se reciben las acciones, se llama a \lstinline{OnInputReceived}. El juego termina si se llama \lstinline{Win} o \lstinline{Lose}, en cuyo caso UTHOPIA regresará a llamar \lstinline{OnEpisodeBegin} dando inicio a otra instancia del juego, o terminará con la fase que procede.
  
 \begin{figure}[ht!]
     \centering
@@ -75,7 +75,7 @@ La clase Game creada permite crear juegos a partir de la implementación de sus 
  
 \vspace*{1cm}
  
-\begin{lstlisting}[caption={Implementación de la clase Game base para todos los juegos de UTHOPIA}]
+\begin{lstlisting}[caption={Implementación de la clase \lstinline{Game} base para todos los juegos de UTHOPIA}]
     public abstract class Game : MonoBehaviour
     {
         private static Game _instance;
@@ -128,7 +128,7 @@ La clase Game creada permite crear juegos a partir de la implementación de sus 
  
 \subsection{La heurística para agentes humanos}
  
-Para obtener las entradas del teclado implementamos el método Heuristic el cual permite agregar acciones de forma determinista. Esto permite a las personas, cuando el Agente está en modo Heuristic Only, participar en la prueba directamente en lugar de los algoritmos de RL.
+Para obtener las entradas del los agentes humanos mediante el teclado implementamos el método Heuristic el cual permite agregar acciones de forma determinista. Esto facilita que cuando el Agente está en modo \textit{Heuristic Only} las personas puedan participar en la prueba directamente.
  
 \vspace*{1cm}
  
@@ -160,24 +160,26 @@ Para obtener las entradas del teclado implementamos el método Heuristic el cual
  
 \subsection{Configuración de los componentes de UTHOPIA y Unity ML}
  
-Desde el editor se deben configurar los espacios de acciones y observaciones. De las $6$ acciones admitidas, las primeras dos son de semánticamente las de dirección y aceptan $3$ valores discretos ${{0,1,2}}$ y el resto solo $2$ valores discretos ${{0,1}}$.
+Desde el editor, en el componente de \lstinline{BehaviorParameters}, se deben configurar los espacios de acción  (\ref{fig:unity-editor-1}) y los sensores para la observación.
+
+De las $6$ acciones admitidas, las primeras dos son de semánticamente las de dirección y aceptan $3$ valores discretos ${{0,1,2}}$ y el resto solo $2$ valores discretos ${{0,1}}$.
  
-Además, para captar las observaciones visuales, se agrega el componente de Camera Sensor el cual se encarga de captar los píxeles de la cámara y enviárselos al receptor en python.
+Además se agrega el componente de \lstinline{CameraSensor} para captar las observaciones visuales. Este sensor capta los píxeles de la cámara y los agrega al la lista de observaciones eviadas al receptor en python. 
  
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=0.7\textwidth]{Graphics/unity_editor.png}
-    \caption{Configuración de componentes del GameObject AgentManager.}
+    \caption{Configuración de componentes del \lstinline{GameObject AgentManager}.}
     \label{fig:unity-editor-1}
 \end{figure}
  
 \section{Ejemplo: Creación de un juego}
  
-FindGoalGame es un juego sencillo que trata sobre mover el objeto blanco y hacer que toque el objeto verde. Es uno de los juegos más básicos. La mera idea de mostrar dos objetos en pantalla debería inducir a los agentes a provocar su interacción en pocos intentos. 
+\lstinline{FindGoalGame} es un juego sencillo que trata sobre mover el objeto blanco y hacer que toque el objeto verde. Es uno de los juegos más básicos. La mera idea de mostrar dos objetos en pantalla debería inducir a los agentes a provocar su interacción en pocos intentos. 
  
 \vspace*{1cm}
  
-\begin{lstlisting}[caption={Ejemplo de implementación del juego FindGoal, el cual trata sobre hacer que el objeto de color blanco toque al objeto verde.}]
+\begin{lstlisting}[caption={Ejemplo de implementación de un juego que trata sobre un objeto de color blanco que debe tocar al objeto verde.}]
     public class FindGoalGame : Game
     {
         public EntityController prefab;
@@ -250,11 +252,9 @@ Otros juegos similares pueden incluir obstáculos estáticos o móviles, otros o
 
 \section{Experimentos}
  
-En los siguientes experimentos se comparará la capacidad de solucionar las tareas de los juegos creados por humanos y algoritmos ya existentes provistos por Unity ML Toolkit. 
+En los siguientes experimentos se hará una prueba a pequeña escala del proceso de evaluación de UTHOPIA. Se han creado $4$ juegos para la demostración y se comparará el desempeño entre $3$ personas y dos algoritmos de RL: Proximal Policy Optimization (PPO) y Soft Actor-Critic (SAC).
  
-Se han creado $4$ juegos para la demostración y se comparará el desempeño entre $3$ personas y dos algoritmos de RL: Proximal Policy Optimization (PPO) y Soft Actor-Critic (SAC).
- 
-El juego 1 trata sobre alcanzar el objetivo verde con el objeto blanco. El juego 2 (Figura \ref{fig:uthopia} a la derecha) consiste en alcanzar el objetivo verde evadiendo los obstáculos. El juego 1 es una variante sin obstáculos del 2. El juego 3 (\ref{fig:uthopia_street}) consiste en tocar dos objetivos cruzando los obstáculos móviles. El juego 4 (Figura \ref{fig:uthopia} a la izquierda) representa un problema de conteo, donde al tocar un objeto de un color, todos los objetos se mueven destruyéndose uno a uno contra el otro grupo.
+El juego $1$ trata sobre alcanzar el objetivo verde con el objeto blanco. El juego $2$ (Figura \ref{fig:uthopia} a la derecha) consiste en alcanzar el objetivo verde evadiendo los obstáculos. El juego $1$ es una variante sin obstáculos del $2$. El juego $3$ (\ref{fig:uthopia_street}) consiste en tocar dos objetivos cruzando los obstáculos móviles. El juego $4$ (Figura \ref{fig:uthopia} a la izquierda) representa un problema de conteo, donde al tocar un objeto de un color, todos los objetos se mueven destruyéndose uno a uno contra el otro grupo.
  
 \vspace*{1cm}
  
@@ -321,7 +321,7 @@ El juego 1 trata sobre alcanzar el objetivo verde con el objeto blanco. El juego
  
 Como se indicó en (\ref{chapter:proposal:evaluation-flow}), la evaluación se realiza en dos fases: Preparación y Prueba. La transición entre ellas no es automática en la implementación que se ha realizado. 
  
-Durante el experimento se realizaron las etapas de preparación con 5 minutos de tiempo. Para los humanos esto era en tiempo real, pero para los agentes, al tener una velocidad de juego diferente, fue equivalente a unos 13 minutos. Luego para las pruebas se les asignó 3 minutos por juego y se realizó el conteo de victorias como se aprecia en la tabla (\ref{tab:experiment}).
+Durante el experimento se realizaron las etapas de preparación contando 5 minutos. Para los humanos esto era en tiempo real, pero para los agentes fue equivalente a unos 13 minutos al tener una velocidad de simulación diferente. Luego para las fases de prueba se asigna 3 minutos de juego y se realiza el conteo de victorias. Los resultados se aprecian en la tabla (\ref{tab:experiment}).
  
 \begin{table}[ht!]
     \centering
@@ -345,7 +345,7 @@ Durante el experimento se realizaron las etapas de preparación con 5 minutos de
             \bottomrule
         \end{tabular}%
     }
-    \caption{Resultado del experimento en la fase de Prueba. Total de juegos completados correctamente en 3 minutos.}
+    \caption{Resultado del experimento en la fase de Prueba. Total de juegos completados correctamente durante 3 minutos.}
     \label{tab:experiment}
 \end{table}
  
