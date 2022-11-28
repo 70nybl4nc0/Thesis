@@ -43,7 +43,6 @@ Como se ha sugerido en (\ref{section:state-of-the-art:a-good-measure-of-intelige
 
 \section{Estructura de UTHOPIA}
 
-
 \begin{figure}[ht!]
     \centering
     \begin{subfigure}
@@ -59,7 +58,6 @@ Como se ha sugerido en (\ref{section:state-of-the-art:a-good-measure-of-intelige
     \caption{Algunos juegos de UTHOPIA. A la izquierda elegir el bando con mayor numero y a la derecha tocar el objetivo evadiendo obstáculos.}
     \label{fig:uthopia}
 \end{figure}
-
 
 \begin{figure}[ht!]
     \centering
@@ -93,7 +91,7 @@ Desde la perspectiva del aprendizaje por refuerzo para un solo agente definimos 
     \item Señal de Recompensa: Cada juego tiene una evaluación binaria. Las recompensas están dadas por la terminación correcta o incorrecta de los mismos. Cada juego tiene asociado una cantidad máxima de tiempo de juego, luego de este el juego termina fallido.
 \end{itemize} 
 
-\subsection{El flujo de evaluación para agentes inteligentes en UTHOPIA}
+\subsection{El flujo de evaluación para agentes inteligentes en UTHOPIA}\label{chapter:proposal:evaluation-flow}
 
 \begin{figure}[ht!]
     \centering
@@ -109,4 +107,6 @@ Una vez se ha seleccionado el juego comienza el primer episodio de la \textit{Fa
 Pasada la fase de preparación se procede a la \textit{Etapa de Prueba} donde se crean nuevas instancias del mismo juego seleccionado utilizando otras semillas para la generación. Esta vez se evalúa la solución las tareas. El resultado cada episodio es binario y los agentes se consideran aprobados si resuelven correctamente la tarea en un número suficiente de intentos.
 
 Luego de realizar la prueba sobre toda la batería de juegos se da a conocer el resultado de inteligencia. En este punto la comparativa de los resultados de los agentes humanos constituye el principal recurso utilizado para valorar el rendimiento de los agentes de inteligencia artificial.
+
+
 
