@@ -7,6 +7,6 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {3.4}Ejemplo de implementaci\IeC {\'o}n de un juego que trata sobre un objeto de color blanco que debe tocar al objeto verde.}{44}{lstlisting.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {3.5}Configuraci\IeC {\'o}n de hiperpar\IeC {\'a}metros para el agente con el algoritmo PPO}{46}{lstlisting.3.5}
+\contentsline {lstlisting}{\numberline {3.5}Configuraci\IeC {\'o}n de hiperpar\IeC {\'a}metros para el agente con el algoritmo PPO}{47}{lstlisting.3.5}
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {3.6}Configuraci\IeC {\'o}n de hiperpar\IeC {\'a}metros para el agente con el algoritmo SAC}{47}{lstlisting.3.6}

@@ -252,9 +252,13 @@ Otros juegos similares pueden incluir obstáculos estáticos o móviles, otros o
 
 \section{Experimentos}
  
-En los siguientes experimentos se hará una prueba a pequeña escala del proceso de evaluación de UTHOPIA. Se han creado $4$ juegos para la demostración y se comparará el desempeño entre $3$ personas y dos algoritmos de RL: Proximal Policy Optimization (PPO) y Soft Actor-Critic (SAC).
+En los siguientes experimentos se hará una prueba a pequeña escala del proceso de evaluación de UTHOPIA. Se han creado $4$ juegos para la demostración y se comparará el desempeño entre $3$ personas y dos algoritmos de RL: Proximal Policy Optimization (PPO) y Soft Actor-Critic (SAC)..
  
 El juego $1$ trata sobre alcanzar el objetivo verde con el objeto blanco. El juego $2$ (Figura \ref{fig:uthopia} a la derecha) consiste en alcanzar el objetivo verde evadiendo los obstáculos. El juego $1$ es una variante sin obstáculos del $2$. El juego $3$ (\ref{fig:uthopia_street}) consiste en tocar dos objetivos cruzando los obstáculos móviles. El juego $4$ (Figura \ref{fig:uthopia} a la izquierda) representa un problema de conteo, donde al tocar un objeto de un color, todos los objetos se mueven destruyéndose uno a uno contra el otro grupo.
+
+Las $3$ personas fueron selecionadas al azar de entre los familares del autor y no conocían los juegos con antelación. La persona $1$ es un varón de $22$ años, la persona $2$ es una mujer de $64$ años y la persona $3$ es una chica de $20$ años. 
+
+Los hiperparámetros utilizados para ambos algoritmos fueron seleccionados por defecto como son ofrecidos por Unity ML. Si bien un ajuste manual pudiese ayudarle a converger mejor, no es el objetivo del documento encontrar dichas combinaciones.
  
 \vspace*{1cm}
  
@@ -351,7 +355,7 @@ Durante el experimento se realizaron las etapas de preparación contando 5 minut
  
 \section{Discución}
  
-A partir de los experimentos realizados se pudo observar que los agentes humanos lograron rápidamente superar las tareas en el tiempo permitido, mostrando un desempeño bueno al comenzar las fases de Prueba. Sin embargo, los algoritmos de RL probados no lograron resolver el problema dado en cada juego, mostrando comportamientos aleatorios en el transcurso de todas las fases de pruebas. Esto es algo predecible ya que lo usual es que se exponen a mucho más tiempo de entrenamiento, de horas o incluso días para lograr un desempeño similar al humano. En el Juego 4, sin embargo, por la naturaleza de juego hubo un aumento en el número de casos correctos logrado por acciones al azar, lo cual indica que se debe aplicar restricciones para evitar este tipo de comportamientos.
+A partir de los experimentos realizados se pudo observar que los agentes humanos lograron rápidamente superar las tareas en el tiempo permitido, mostrando un desempeño bueno al comenzar las fases de Prueba. Sin embargo, los algoritmos de RL probados no lograron resolver el problema dado en cada juego, mostrando comportamientos aleatorios en el transcurso de todas las fases de pruebas. Esto es algo predecible ya que lo usual es que se exponen a mucho más tiempo de entrenamiento, de horas o incluso días para lograr un desempeño similar al humano. Esto puede significar que aún los algoritmos de aprendizaje moderno están lejos de alcanzar el grado de generalización eficiente humana. En el Juego 4, sin embargo, por su naturaleza hubo un aumento en el número de casos correctos logrado por acciones al azar, lo cual indica que se debe aplicar restricciones para evitar este tipo de comportamientos.
  
  
 
