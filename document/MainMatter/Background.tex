@@ -179,14 +179,14 @@ El Conocimiento Básico identifica cuatro amplias categorías de supuestos innat
 Para lograr un proceso de evaluación justo es necesario definir, tomando lo planteado en las secciones anteriores, las características que cumpla todo entorno de evaluación de inteligencia con capacidades de generalización extremas:
 
 \begin{itemize}
-\item Debe describir el Ámbito de la Evaluación: las tareas deben ser realizables de forma similar. Respetando las destrezas que se puedan expresar.
-\item Replicable o Reproducible.
-\item No debe limitarse a la habilidad en una tarea, sino a la evaluación de la adquisición de nuevas habilidades y el uso de estas para resolver nuevas tareas.
-\item Debe contener tareas no conocidas por los desarrolladores.
-\item Controlar la cantidad de experiencia que se brinda para que sean manifiestas las habilidades cognitivas abstractas.
-\item Definir el conjunto de premisas de Conocimiento previo de forma explícita y acorde a los fundamentos antropocéntricos planteados.
-\item Debe funcionar para humanos y máquinas para crear un punto de comparación válido.
-\item Debe justificar la dificultad de generalización entre las pruebas.
+\item Ámbito de la Evaluación explícito: Las tareas deben ser realizables de forma similar. Respetando las destrezas que se puedan expresar.
+\item Replicabilidad y Reproducibilidad: Debe poder ser reproducido por otros investigadores. En caso de utilizar los mismo parámetros, arrojar resultados similares.  
+\item Valorar la generalización por encima de la destreza: No debe limitarse a medir el desempeño en una tarea, sino a la evaluación de la adquisición de nuevas habilidades y el uso de estas para resolver nuevas tareas.
+\item Medir la generalización consciente del desarrollador: Debe contener tareas no conocidas por los desarrolladores.
+\item Eficiencia de muestras: Controlar la cantidad de experiencia que se brinda para que sean manifiestas las habilidades cognitivas abstractas.
+\item Prejuicios de conocimientos explícitos: Definir el conjunto de premisas de Conocimiento previo de forma explícita y acorde a los fundamentos antropocéntricos planteados.
+\item Evaluación de humanos y máquinas: Debe funcionar para humanos y máquinas para crear un punto de comparación válido.
+\item Tareas fundamentalmente diferentes: Debe justificar la dificultad de generalización entre las pruebas.
 \end{itemize}
 
 \section{Entornos de evaluación de Inteligencia}\label{section:state-of-the-art:inteligence-evaluation-enviroments}
@@ -404,4 +404,4 @@ Se han repasado los entornos de evaluación para algoritmos de aprendizaje por r
 
 El ARC tiene buenos aspectos para destacar y cumple con un gran número características de un buen evaluador de inteligencia. Aún así su ámbito de habilidad se centra en sistemas inteligentes estáticos de entrada-salida, sin oportunidad de interacción con el entorno más allá de los ejemplos. Las tareas se crean manualmente por lo que son fijas, no generativas. También se hace complejo evaluar a los algoritmos de aprendizaje por reforzamiento dado la forma en que está diseñada la prueba. Las tareas de propósito general capturadas en ARC carecen del concepto de tiempo. Las nociones de topología se deben dar de forma implícita. 
 
-Es necesario y más justo replantear las premisas teniendo en cuenta el efecto del tiempo en la dinámica del entorno, la percepción explícita de los cambios topográficos y los efectos acción-reacción. Llevar las tareas a conceptos más primitivos en términos de aprendizaje sin descuidar la dificultad de generalización. Y modelar un modelo de evaluación que aplique para agentes inteligentes como a humanos. Por estos motivos en el siguiente capítulo se propone la creación un entorno que cumpla con estos paradigmas: El \textit{Universal test for humans oposing inteligen agents (UTHOPIA)}.
+Es necesario y más justo replantear las premisas teniendo en cuenta el efecto del tiempo en la dinámica del entorno, la percepción explícita de los cambios topográficos y los efectos acción-reacción. Llevar las tareas a conceptos más primitivos en términos de aprendizaje sin descuidar la dificultad de generalización. Y modelar un modelo de evaluación que aplique para agentes inteligentes como a humanos. Por estos motivos en el siguiente capítulo se propone la creación un entorno que cumpla con estos paradigmas: El \textit{Universal test for humans or inteligen agents (UTHOPIA)}.
